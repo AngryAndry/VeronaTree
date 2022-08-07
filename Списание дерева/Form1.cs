@@ -13,17 +13,33 @@ namespace Списание_дерева
 {
     public partial class Form1 : Form
     {
+       public List<Order> orders = new List<Order>();
         public Form1()
         {
+            
             InitializeComponent();
-            List<Order> orders = new List<Order>();
+            
+            PopulateDataGrid(orders);
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
+        public void PopulateDataGrid(List<Order> record)
+        {
+            dataGridView1.Rows.Clear();
+            if (record == null)
+            {
+                return;
+            }
+            foreach (var item in record)
+            {
 
+                dataGridView1.Rows.Add(item.numberOrder,item.model);
+                
+            }
+        }
         private void button1_Click(object sender, EventArgs e)
         {
            AddForm formAdd = new AddForm(this);

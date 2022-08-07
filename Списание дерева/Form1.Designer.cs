@@ -104,7 +104,7 @@ namespace Списание_дерева
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        public System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn NumberOrder;
         private System.Windows.Forms.DataGridViewTextBoxColumn ModelOrder;
         private System.Windows.Forms.Button button1;

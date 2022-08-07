@@ -3,6 +3,7 @@ namespace Списание_дерева
 {
     partial class AddForm
     {
+
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -46,12 +47,14 @@ namespace Списание_дерева
             this.lblAmount = new System.Windows.Forms.Label();
             this.btSave = new System.Windows.Forms.Button();
             this.btCancel = new System.Windows.Forms.Button();
+            this.btAddBlank = new System.Windows.Forms.Button();
+            this.tbAddSize = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblModel
             // 
             this.lblModel.AutoSize = true;
-            this.lblModel.Location = new System.Drawing.Point(73, 95);
+            this.lblModel.Location = new System.Drawing.Point(486, 49);
             this.lblModel.Name = "lblModel";
             this.lblModel.Size = new System.Drawing.Size(63, 20);
             this.lblModel.TabIndex = 0;
@@ -65,10 +68,11 @@ namespace Списание_дерева
             "Unica",
             "Lady",
             "Kreola"});
-            this.cbModel.Location = new System.Drawing.Point(226, 92);
+            this.cbModel.Location = new System.Drawing.Point(565, 46);
             this.cbModel.Name = "cbModel";
             this.cbModel.Size = new System.Drawing.Size(151, 28);
             this.cbModel.TabIndex = 4;
+            this.cbModel.SelectedIndexChanged += new System.EventHandler(this.cbModel_SelectedIndexChanged);
             // 
             // lblNumberOrder
             // 
@@ -95,15 +99,16 @@ namespace Списание_дерева
             "Липа",
             "Акация ",
             "Дуб"});
-            this.cbTreeSpecies.Location = new System.Drawing.Point(226, 144);
+            this.cbTreeSpecies.Location = new System.Drawing.Point(226, 104);
             this.cbTreeSpecies.Name = "cbTreeSpecies";
             this.cbTreeSpecies.Size = new System.Drawing.Size(151, 28);
             this.cbTreeSpecies.TabIndex = 8;
+            this.cbTreeSpecies.SelectedIndexChanged += new System.EventHandler(this.cbTreeSpecies_SelectedIndexChanged);
             // 
             // lblTreeSpecies
             // 
             this.lblTreeSpecies.AutoSize = true;
-            this.lblTreeSpecies.Location = new System.Drawing.Point(73, 147);
+            this.lblTreeSpecies.Location = new System.Drawing.Point(73, 104);
             this.lblTreeSpecies.Name = "lblTreeSpecies";
             this.lblTreeSpecies.Size = new System.Drawing.Size(116, 20);
             this.lblTreeSpecies.TabIndex = 7;
@@ -111,7 +116,7 @@ namespace Списание_дерева
             // 
             // tbLength
             // 
-            this.tbLength.Location = new System.Drawing.Point(226, 210);
+            this.tbLength.Location = new System.Drawing.Point(73, 206);
             this.tbLength.Name = "tbLength";
             this.tbLength.Size = new System.Drawing.Size(151, 27);
             this.tbLength.TabIndex = 10;
@@ -121,7 +126,7 @@ namespace Списание_дерева
             // lblSize
             // 
             this.lblSize.AutoSize = true;
-            this.lblSize.Location = new System.Drawing.Point(73, 213);
+            this.lblSize.Location = new System.Drawing.Point(73, 147);
             this.lblSize.Name = "lblSize";
             this.lblSize.Size = new System.Drawing.Size(133, 20);
             this.lblSize.TabIndex = 9;
@@ -129,7 +134,7 @@ namespace Списание_дерева
             // 
             // tbWidth
             // 
-            this.tbWidth.Location = new System.Drawing.Point(407, 210);
+            this.tbWidth.Location = new System.Drawing.Point(248, 206);
             this.tbWidth.Name = "tbWidth";
             this.tbWidth.Size = new System.Drawing.Size(151, 27);
             this.tbWidth.TabIndex = 11;
@@ -138,7 +143,7 @@ namespace Списание_дерева
             // 
             // tbHeight
             // 
-            this.tbHeight.Location = new System.Drawing.Point(605, 210);
+            this.tbHeight.Location = new System.Drawing.Point(416, 206);
             this.tbHeight.Name = "tbHeight";
             this.tbHeight.Size = new System.Drawing.Size(151, 27);
             this.tbHeight.TabIndex = 12;
@@ -148,7 +153,7 @@ namespace Списание_дерева
             // lblLength
             // 
             this.lblLength.AutoSize = true;
-            this.lblLength.Location = new System.Drawing.Point(226, 187);
+            this.lblLength.Location = new System.Drawing.Point(73, 177);
             this.lblLength.Name = "lblLength";
             this.lblLength.Size = new System.Drawing.Size(87, 20);
             this.lblLength.TabIndex = 13;
@@ -157,7 +162,7 @@ namespace Списание_дерева
             // lblWidth
             // 
             this.lblWidth.AutoSize = true;
-            this.lblWidth.Location = new System.Drawing.Point(407, 187);
+            this.lblWidth.Location = new System.Drawing.Point(248, 177);
             this.lblWidth.Name = "lblWidth";
             this.lblWidth.Size = new System.Drawing.Size(101, 20);
             this.lblWidth.TabIndex = 14;
@@ -166,7 +171,7 @@ namespace Списание_дерева
             // lblHeight
             // 
             this.lblHeight.AutoSize = true;
-            this.lblHeight.Location = new System.Drawing.Point(605, 187);
+            this.lblHeight.Location = new System.Drawing.Point(416, 177);
             this.lblHeight.Name = "lblHeight";
             this.lblHeight.Size = new System.Drawing.Size(93, 20);
             this.lblHeight.TabIndex = 15;
@@ -174,7 +179,7 @@ namespace Списание_дерева
             // 
             // tbAmount
             // 
-            this.tbAmount.Location = new System.Drawing.Point(226, 265);
+            this.tbAmount.Location = new System.Drawing.Point(626, 206);
             this.tbAmount.Name = "tbAmount";
             this.tbAmount.Size = new System.Drawing.Size(151, 27);
             this.tbAmount.TabIndex = 17;
@@ -183,7 +188,7 @@ namespace Списание_дерева
             // lblAmount
             // 
             this.lblAmount.AutoSize = true;
-            this.lblAmount.Location = new System.Drawing.Point(73, 268);
+            this.lblAmount.Location = new System.Drawing.Point(626, 177);
             this.lblAmount.Name = "lblAmount";
             this.lblAmount.Size = new System.Drawing.Size(90, 20);
             this.lblAmount.TabIndex = 16;
@@ -197,6 +202,7 @@ namespace Списание_дерева
             this.btSave.TabIndex = 18;
             this.btSave.Text = "Сохранить";
             this.btSave.UseVisualStyleBackColor = true;
+            this.btSave.Click += new System.EventHandler(this.btSave_Click);
             // 
             // btCancel
             // 
@@ -208,11 +214,36 @@ namespace Списание_дерева
             this.btCancel.UseVisualStyleBackColor = true;
             this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
             // 
+            // btAddBlank
+            // 
+            this.btAddBlank.ForeColor = System.Drawing.Color.LimeGreen;
+            this.btAddBlank.Location = new System.Drawing.Point(400, 104);
+            this.btAddBlank.Name = "btAddBlank";
+            this.btAddBlank.Size = new System.Drawing.Size(25, 29);
+            this.btAddBlank.TabIndex = 20;
+            this.btAddBlank.Text = "+";
+            this.btAddBlank.UseVisualStyleBackColor = true;
+            this.btAddBlank.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // tbAddSize
+            // 
+            this.tbAddSize.ForeColor = System.Drawing.Color.LimeGreen;
+            this.tbAddSize.Location = new System.Drawing.Point(42, 206);
+            this.tbAddSize.Name = "tbAddSize";
+            this.tbAddSize.Size = new System.Drawing.Size(25, 29);
+            this.tbAddSize.TabIndex = 21;
+            this.tbAddSize.Text = "+";
+            this.tbAddSize.UseVisualStyleBackColor = true;
+            this.tbAddSize.Click += new System.EventHandler(this.tbAddSize_Click);
+            // 
             // AddForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.tbAddSize);
+            this.Controls.Add(this.btAddBlank);
             this.Controls.Add(this.btCancel);
             this.Controls.Add(this.btSave);
             this.Controls.Add(this.tbAmount);
@@ -257,5 +288,7 @@ namespace Списание_дерева
         private System.Windows.Forms.Label lblAmount;
         private System.Windows.Forms.Button btSave;
         private System.Windows.Forms.Button btCancel;
+        private System.Windows.Forms.Button btAddBlank;
+        private System.Windows.Forms.Button tbAddSize;
     }
 }

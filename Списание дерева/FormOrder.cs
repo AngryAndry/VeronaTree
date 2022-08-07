@@ -15,6 +15,12 @@ namespace Списание_дерева
         public FormOrder()
         {
             InitializeComponent();
+
+        }
+
+        private void FormOrder_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
