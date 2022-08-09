@@ -9,14 +9,10 @@ namespace Списание_дерева
 {
     class AddBlankSize
     {
-        public Label lblSize { get; set; }
-        public Label lblLength { get; set; }
-        public Label lblWidth { get; set; }
-        public Label lblHeight { get; set; }
+      
         public TextBox tbLength { get; set; }
         public TextBox tbWidth { get; set; }
         public TextBox tbHeight { get; set; }
-        public Label lblAmount { get; set; }
         public TextBox tbAmount { get; set; }
         public Button btDelete { get; set; }
 
@@ -28,36 +24,11 @@ namespace Списание_дерева
             btDelete.Size = new System.Drawing.Size(25, 29);
             btDelete.Name = "22";
             btDelete.Click += new EventHandler(btDelete_Click);
-
-            lblSize = new Label();
-            lblSize.AutoSize = true;
-            lblSize.Size = new System.Drawing.Size(133, 20);
-            lblSize.Text = "Размер заготовки";
-
             tbLength = new TextBox();
-            this.tbLength.Size = new System.Drawing.Size(151, 27);
+            this.tbLength.Size = new System.Drawing.Size(133, 23);
             this.tbLength.KeyPress += new KeyPressEventHandler(tbLength_KeyPress);
 
-            lblLength = new Label();
-            this.lblLength.AutoSize = true;
-            this.lblLength.Size = new System.Drawing.Size(87, 20);
-            this.lblLength.Text = "Длина   мм";
 
-            lblWidth = new Label();
-            this.lblWidth.AutoSize = true;
-            this.lblWidth.Size = new System.Drawing.Size(87, 20);
-            this.lblWidth.Text = "Ширина   мм";
-
-            lblHeight = new Label();
-            this.lblHeight.AutoSize = true;
-            this.lblHeight.Size = new System.Drawing.Size(87, 20);
-            this.lblHeight.Text = "Высота   мм";
-
-            lblAmount = new Label();
-            this.lblAmount.AutoSize = true;
-            this.lblAmount.Name = "lblAmount";
-            this.lblAmount.Size = new System.Drawing.Size(90, 20);
-            this.lblAmount.Text = "Количество";
 
             tbWidth = new TextBox();
             this.tbWidth.Size = new System.Drawing.Size(151, 27);
@@ -85,16 +56,13 @@ namespace Списание_дерева
                 e.Handled = true;
             }
         }
-        void btDelete_Click(object sender, EventArgs e)
+        public void btDelete_Click(object sender, EventArgs e)
         {
 
-            lblSize.Dispose();
+            
             btDelete.Dispose();
             tbLength.Dispose();
-            lblLength.Dispose();
-            lblHeight.Dispose();
-            lblWidth.Dispose();
-            lblAmount.Dispose();
+ 
             tbWidth.Dispose();
             tbHeight.Dispose();
             tbAmount.Dispose();
