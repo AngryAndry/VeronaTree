@@ -62,7 +62,6 @@ namespace Списание_дерева
             
             btDelete.Dispose();
             tbLength.Dispose();
- 
             tbWidth.Dispose();
             tbHeight.Dispose();
             tbAmount.Dispose();
