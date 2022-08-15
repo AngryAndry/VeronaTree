@@ -59,12 +59,12 @@ namespace Списание_дерева
         public void btDelete_Click(object sender, EventArgs e)
         {
 
-            
-            btDelete.Dispose();
+            tbLength.Name = "KillMe";
             tbLength.Dispose();
+           /* btDelete.Dispose();
             tbWidth.Dispose();
             tbHeight.Dispose();
-            tbAmount.Dispose();
+            tbAmount.Dispose();*/
         }
     }
 }

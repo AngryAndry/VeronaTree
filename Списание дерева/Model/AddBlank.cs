@@ -23,8 +23,11 @@ namespace Списание_дерева.Model
         public Button btDelete { get; set; }
         public Button btAdd { get; set; }
         public List<AddBlankSize> addBlankSizes;
+        public Button tbAddSize;
+
         public AddBlank()
         {
+
             addBlankSizes = new List<AddBlankSize>();
             AddBlankSize _addBlankSize = new AddBlankSize();
             addBlankSizes.Add(_addBlankSize);
@@ -80,7 +83,15 @@ namespace Списание_дерева.Model
             btAdd = new Button();
             btAdd.Text = "+";
             btAdd.Size = new System.Drawing.Size(25, 29);
-         
+
+            this.tbAddSize = new System.Windows.Forms.Button();
+            this.tbAddSize.ForeColor = System.Drawing.Color.LimeGreen;
+            this.tbAddSize.Location = new System.Drawing.Point(42, 206);
+            this.tbAddSize.Size = new System.Drawing.Size(25, 29);
+            this.tbAddSize.TabIndex = 21;
+            this.tbAddSize.Text = "+";
+            this.tbAddSize.UseVisualStyleBackColor = true;
+
             /*
               tbLength = new TextBox();
               this.tbLength.Size = new System.Drawing.Size(151, 27);

@@ -22,19 +22,51 @@ namespace Списание_дерева
         SizeSemimanufactures sizeSemimanufactures;
         List<AddBlank> addBlanks = new List<AddBlank>();
 
+
         public AddForm()
         {
             InitializeComponent();
             cbModel.SelectedIndexChanged += cbModel_SelectedIndexChanged;
-            cbTreeSpecies.SelectedIndexChanged += cbTreeSpecies_SelectedIndexChanged;
+            //cbTreeSpecies.SelectedIndexChanged += cbTreeSpecies_SelectedIndexChanged;
         }
 
         public AddForm(Form1 form1)
         {
             InitializeComponent();
-
+            i = 0;
             f1 = form1;
-            
+            AddBlank addBlank = new();
+
+            addBlank.lblSize.Location = new Point(73,143 + i);
+            addBlank.lblLength.Location = new Point(73, 177+ i);
+            addBlank.lblWidth.Location = new Point(248, 177 + i);
+            addBlank.lblHeight.Location = new Point(416, 177 + i);
+            addBlank.lblAmount.Location = new System.Drawing.Point(626, 177 + i);
+            //addBlank.btAdd.Location = new System.Drawing.Point(tbAddSize.Location.X, tbAddSize.Location.Y + i);
+            Controls.Add(addBlank.lblSize);
+            Controls.Add(addBlank.lblLength);
+            Controls.Add(addBlank.lblHeight);
+            Controls.Add(addBlank.lblWidth);
+            Controls.Add(addBlank.lblAmount);
+           // Controls.Add(addBlank.btAdd);
+                
+                addBlank.addBlankSizes[0].tbLength.Location = new Point(73, 206 + i);
+                addBlank.addBlankSizes[0].tbWidth.Location = new Point(248, 206 + i);
+                addBlank.addBlankSizes[0].tbHeight.Location = new Point(416, 206 + i);
+                addBlank.addBlankSizes[0].tbAmount.Location = new Point(626, 206 + i);
+                this.Controls.Add(addBlank.addBlankSizes[0].tbLength);
+                Controls.Add(addBlank.addBlankSizes[0].tbAmount);
+                Controls.Add(addBlank.addBlankSizes[0].tbWidth);
+                Controls.Add(addBlank.addBlankSizes[0].tbHeight);
+            addBlank.addBlankSizes[0].btDelete.Click += new EventHandler(btDelete_Click);
+            addBlank.lblTreeSpecies.Location = new System.Drawing.Point(73, 104 + i);
+            addBlank.cbTreeSpecies.Location = new System.Drawing.Point(226, 104 + i);
+            addBlank.tbAddSize.Click += new System.EventHandler(this.tbAddSize_Click);
+
+            Controls.Add(addBlank.tbAddSize);
+            this.Controls.Add(addBlank.lblTreeSpecies);
+            this.Controls.Add(addBlank.cbTreeSpecies);
+            addBlanks.Add(addBlank);
         }
 
         private void AddForm_Load(object sender, EventArgs e)
@@ -58,11 +90,6 @@ namespace Списание_дерева
         }
 
 
-        private void tbLength_TextChanged(object sender, EventArgs e)
-        {
-        
-        }
-
         private void tbLength_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
@@ -77,17 +104,6 @@ namespace Списание_дерева
                 e.Handled = true;
             }
         }
-
-        private void tbWidth_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tbHeight_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void tbWidth_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
@@ -143,7 +159,7 @@ namespace Списание_дерева
            // order = new Order(selectedModel,tbNumberOrder.Text.ToString(),DateTime.Now,selectedTreeSpecies,Int32.Parse(tbLength.Text),Int32.Parse(tbWidth.Text),Int32.Parse(tbHeight.Text),Int32.Parse(tbAmount.Text));
             order = new Order(selectedModel,tbNumberOrder.Text.ToString(),DateTime.Now);
             semimanufactures = new Semimanufactures(selectedTreeSpecies);
-            sizeSemimanufactures = new SizeSemimanufactures(Int32.Parse(tbLength.Text), Int32.Parse(tbWidth.Text), Int32.Parse(tbHeight.Text), Int32.Parse(tbAmount.Text));
+        //    sizeSemimanufactures = new SizeSemimanufactures(Int32.Parse(tbLength.Text), Int32.Parse(tbWidth.Text), Int32.Parse(tbHeight.Text), Int32.Parse(tbAmount.Text));
             semimanufactures.sizeSemimanufactures.Add(sizeSemimanufactures);
             order.semimanufactures.Add(semimanufactures);
              f1.orders.Add(order);
@@ -159,7 +175,7 @@ namespace Списание_дерева
 
         private void cbTreeSpecies_SelectedIndexChanged(object sender, EventArgs e)
         {
-             selectedTreeSpecies = cbTreeSpecies.SelectedItem.ToString();
+        //     selectedTreeSpecies = cbTreeSpecies.SelectedItem.ToString();
             
         }
 
@@ -168,35 +184,40 @@ namespace Списание_дерева
         AddBlank addBlank = new AddBlank();
 
             i = i + 155;
-            addBlank.lblSize.Location = new Point(lblSize.Location.X, lblSize.Location.Y+i);
-            addBlank.lblLength.Location = new Point(lblLength.Location.X, lblLength.Location.Y + i);
-            addBlank.lblWidth.Location = new Point(lblWidth.Location.X, lblWidth.Location.Y + i);
-            addBlank.lblHeight.Location = new Point(lblHeight.Location.X, lblHeight.Location.Y + i);
-            addBlank.lblAmount.Location = new System.Drawing.Point(lblAmount.Location.X, lblAmount.Location.Y+ i);
+            addBlank.lblSize.Location = new Point(73, 143 + i);
+            addBlank.lblLength.Location = new Point(73, 177 + i);
+            addBlank.lblWidth.Location = new Point(248, 177 + i);
+            addBlank.lblHeight.Location = new Point(416, 177 + i);
+            addBlank.lblAmount.Location = new System.Drawing.Point(416, 177 + i);
+           // addBlank.tbAddSize.Location = new Point(addBlank.tbAddSize.Location.X, addBlank.tbAddSize.Location.Y + i);
             //addBlank.btAdd.Location = new System.Drawing.Point(tbAddSize.Location.X, tbAddSize.Location.Y + i);
             Controls.Add(addBlank.lblSize);
             Controls.Add(addBlank.lblLength);
             Controls.Add(addBlank.lblHeight);
             Controls.Add(addBlank.lblWidth);
+            Controls.Add(addBlank.lblAmount);
             Controls.Add(addBlank.btAdd);
+          //  Controls.Add(addBlank.tbAddSize);
             
             foreach (var item in addBlank.addBlankSizes)
             {
                 
-            item.btDelete.Location = new System.Drawing.Point(tbAddSize.Location.X, tbAddSize.Location.Y + i);
+          //  item.btDelete.Location = new System.Drawing.Point(addBlank.tbAddSize.Location.X, addBlank.tbAddSize.Location.Y + i);
                 item.tbLength.Location = new Point(73, 206+i);
                 item.tbWidth.Location = new Point(248, 206+i);
                 item.tbHeight.Location = new Point(416, 206 + i);
                 item.tbAmount.Location = new Point(626, 206 + i);
-            this.Controls.Add(item.btDelete);
+                // this.Controls.Add(item.btDelete);
+
+                //   item.btDelete.Click += new EventHandler(btDelete_Click);
+
             this.Controls.Add(item.tbLength);
             Controls.Add(item.tbAmount);
             Controls.Add(item.tbWidth);
             Controls.Add(item.tbHeight);
-                item.btDelete.Click += new EventHandler(btDelete_Click);
-
-
+                addBlanks.Add(addBlank);
             }
+                addBlank.tbAddSize.Click += new System.EventHandler(this.tbAddSize_Click);
             addBlank.lblTreeSpecies.Location = new System.Drawing.Point(73, 104 + i);
             addBlank.cbTreeSpecies.Location = new System.Drawing.Point(226, 104+ i);
 
@@ -210,48 +231,140 @@ namespace Списание_дерева
             btCancel.Location = new Point (455, 372+i);
         }
         void btDelete_Click(object sender, EventArgs e)
+
         {
             i = i - 155;
+            foreach (var addBlank in addBlanks)
+            {
 
+                addBlank.lblSize.Dispose();
+                addBlank.lblLength.Dispose();
+                addBlank.lblWidth.Dispose();
+                addBlank.lblHeight.Dispose();
+                addBlank.lblAmount.Dispose();
+                foreach (var item in addBlank.addBlankSizes)
+                {
+                    Controls.Add(item.tbLength);
+                    Controls.Add(item.tbAmount);
+                    Controls.Add(item.tbWidth);
+                    Controls.Add(item.tbHeight);
+                }
+            }
+            UpdateForm();      
         }
-                void btSizeDelete_Click(object sender, EventArgs e)
+        Button but;
+        void btSizeDelete_Click(object sender, EventArgs e)
         {
-            i = i - 35;
-         
+          
+            UpdateForm();
+
         }
 
         private void tbAddSize_Click(object sender, EventArgs e)
         {
             i = i + 35;
-            addNewBlank();
-            addBlanks[addBlanks.Count - 1].addNewBlankSize();
-            addBlanks[addBlanks.Count - 1].addBlankSizes[addBlanks[addBlanks.Count - 1].addBlankSizes.Count-1].tbLength.Location = new Point(tbLength.Location.X, tbLength.Location.Y + i);
+            AddBlankSize addBlank = new AddBlankSize();
+            
+            //addBlanks[addBlanks.Count - 1].addNewBlankSize();
+            addBlank.tbLength.Location = new Point(73, 206 + i);
+            addBlank.tbWidth.Location = new Point(248,206+ i);
+            addBlank.tbHeight.Location = new Point(416,206 + i);
+            addBlank.tbAmount.Location = new Point(626,206 + i);
+            addBlank.btDelete.Location = new System.Drawing.Point(addBlanks[0].tbAddSize.Location.X, addBlanks[0].tbAddSize.Location.Y + i);
+ 
+            this.Controls.Add(addBlank.tbLength);
 
-            addBlanks[addBlanks.Count - 1].addBlankSizes[addBlanks[addBlanks.Count - 1].addBlankSizes.Count-1].tbWidth.Location = new Point(248, 206 + i);
-            addBlanks[addBlanks.Count - 1].addBlankSizes[addBlanks[addBlanks.Count - 1].addBlankSizes.Count-1].tbHeight.Location = new Point(416, 206 + i);
-            addBlanks[addBlanks.Count - 1].addBlankSizes[addBlanks[addBlanks.Count - 1].addBlankSizes.Count-1].tbAmount.Location = new Point(626, 206 + i);
-            addBlanks[addBlanks.Count - 1].addBlankSizes[addBlanks[addBlanks.Count - 1].addBlankSizes.Count - 1].btDelete.Location = new System.Drawing.Point(tbAddSize.Location.X, tbAddSize.Location.Y + i);
-
-
-
-            //  this.Controls.Add(addBlank.btDelete);
-            this.Controls.Add(addBlanks[addBlanks.Count - 1].addBlankSizes[addBlanks[addBlanks.Count - 1].addBlankSizes.Count-1].tbLength);
-
-                Controls.Add(addBlanks[addBlanks.Count - 1].addBlankSizes[addBlanks[addBlanks.Count - 1].addBlankSizes.Count-1].tbAmount);
-                Controls.Add(addBlanks[addBlanks.Count - 1].addBlankSizes[addBlanks[addBlanks.Count - 1].addBlankSizes.Count-1].tbWidth);
-                Controls.Add(addBlanks[addBlanks.Count - 1].addBlankSizes[addBlanks[addBlanks.Count - 1].addBlankSizes.Count-1].tbHeight);
-            Controls.Add(addBlanks[addBlanks.Count - 1].addBlankSizes[addBlanks[addBlanks.Count - 1].addBlankSizes.Count - 1].btDelete);
+                Controls.Add(addBlank.tbAmount);
+                Controls.Add(addBlank.tbWidth);
+                Controls.Add(addBlank.tbHeight);
+            Controls.Add(addBlank.btDelete);
                 btSave.Location = new Point(226, 372 + i);
                 btCancel.Location = new Point(455, 372 + i);
 
             //  addBlank[addBlanks.Count - 1].btDelete.Location = new System.Drawing.Point(400, 104 + i);
-            addBlanks[addBlanks.Count - 1].addBlankSizes[addBlanks[addBlanks.Count - 1].addBlankSizes.Count - 1].btDelete.Click += new EventHandler(btSizeDelete_Click);
-
+            addBlank.btDelete.Click += new EventHandler(btSizeDelete_Click);
+            addBlanks[0].addBlankSizes.Add(addBlank);
 
         }
         private void addNewBlank() {
             AddBlank addBlank = new();
             addBlanks.Add(addBlank);
                 }
+        private void UpdateForm()
+        {
+            i = 0;
+            foreach (var addBlank in addBlanks)
+            {
+                Controls.Remove(addBlank.lblSize);
+                Controls.Remove(addBlank.lblLength);
+                Controls.Remove(addBlank.lblWidth);
+                Controls.Remove(addBlank.lblHeight);
+                Controls.Remove(addBlank.lblAmount);
+                
+                foreach (var item in addBlank.addBlankSizes)
+                {
+                    Controls.Remove(item.tbLength);
+                    Controls.Remove(item.tbAmount);
+                    Controls.Remove(item.tbWidth);
+                    Controls.Remove(item.tbHeight);
+                    Controls.Remove(item.btDelete);
+
+                }
+            }
+            
+
+            foreach (var addBlank in addBlanks)
+            {
+
+                addBlank.lblTreeSpecies.Location = new System.Drawing.Point(73, 104 + i);
+                addBlank.cbTreeSpecies.Location = new System.Drawing.Point(226, 104 + i);
+                addBlank.lblSize.Location = new Point(73, 143 + i);
+                addBlank.lblLength.Location = new Point(73, 177 + i);
+                addBlank.lblWidth.Location = new Point(248, 177 + i);
+                addBlank.lblHeight.Location = new Point(416, 177 + i);
+                addBlank.lblAmount.Location = new Point(626, 177 + i);
+                //addBlank.btAdd.Location = new System.Drawing.Point(tbAddSize.Location.X, tbAddSize.Location.Y + i);
+                Controls.Add(addBlank.lblSize);
+                Controls.Add(addBlank.lblLength);
+                Controls.Add(addBlank.lblHeight);
+                Controls.Add(addBlank.lblWidth);
+                Controls.Add(addBlank.lblAmount);
+               // Controls.Add(addBlank.btAdd);
+                for (int i = 0; i < addBlank.addBlankSizes.Count; i++)
+                {
+                    if (addBlank.addBlankSizes[i].tbLength.Name == "KillMe")
+                    {
+                        addBlank.addBlankSizes.RemoveAt(i);
+                    }
+
+                }
+
+                foreach (var item in addBlank.addBlankSizes)
+                {
+
+
+                    item.tbLength.Location = new Point(73, 206 + i);
+                    item.tbWidth.Location = new Point(248, 206 + i);
+                    item.tbHeight.Location = new Point(416, 206 + i);
+                    item.tbAmount.Location = new Point(626, 206 + i);
+                    addBlank.btDelete.Location = new System.Drawing.Point(addBlanks[0].tbAddSize.Location.X, addBlanks[0].tbAddSize.Location.Y + i);
+                    Controls.Add(item.btDelete);
+                    Controls.Add(item.tbLength);
+                    Controls.Add(item.tbAmount);
+                    Controls.Add(item.tbWidth);
+                    Controls.Add(item.tbHeight);
+                    item.btDelete.Click += new EventHandler(btDelete_Click);
+                    i += 35;
+                }
+              
+                addBlank.tbAddSize.Click += new System.EventHandler(this.tbAddSize_Click);
+
+                Controls.Add(addBlank.tbAddSize);
+                this.Controls.Add(addBlank.lblTreeSpecies);
+                this.Controls.Add(addBlank.cbTreeSpecies);
+                
+                //i += 155;
+            }
+        }
     }
 }
