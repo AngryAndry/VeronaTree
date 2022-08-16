@@ -36,15 +36,20 @@ namespace Списание_дерева
             this.tbNumberOrder = new System.Windows.Forms.TextBox();
             this.btSave = new System.Windows.Forms.Button();
             this.btCancel = new System.Windows.Forms.Button();
-            this.btAddBlank = new System.Windows.Forms.Button();
+            this.dGVSize = new System.Windows.Forms.DataGridView();
+            this.Length = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Height = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Width = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dGVSize)).BeginInit();
             this.SuspendLayout();
             // 
             // lblModel
             // 
             this.lblModel.AutoSize = true;
-            this.lblModel.Location = new System.Drawing.Point(486, 49);
+            this.lblModel.Location = new System.Drawing.Point(425, 37);
             this.lblModel.Name = "lblModel";
-            this.lblModel.Size = new System.Drawing.Size(63, 20);
+            this.lblModel.Size = new System.Drawing.Size(50, 15);
             this.lblModel.TabIndex = 0;
             this.lblModel.Text = "Модель";
             this.lblModel.Click += new System.EventHandler(this.label1_Click);
@@ -56,33 +61,36 @@ namespace Списание_дерева
             "Unica",
             "Lady",
             "Kreola"});
-            this.cbModel.Location = new System.Drawing.Point(565, 46);
+            this.cbModel.Location = new System.Drawing.Point(494, 34);
+            this.cbModel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbModel.Name = "cbModel";
-            this.cbModel.Size = new System.Drawing.Size(151, 28);
+            this.cbModel.Size = new System.Drawing.Size(133, 23);
             this.cbModel.TabIndex = 4;
             this.cbModel.SelectedIndexChanged += new System.EventHandler(this.cbModel_SelectedIndexChanged);
             // 
             // lblNumberOrder
             // 
             this.lblNumberOrder.AutoSize = true;
-            this.lblNumberOrder.Location = new System.Drawing.Point(73, 49);
+            this.lblNumberOrder.Location = new System.Drawing.Point(64, 37);
             this.lblNumberOrder.Name = "lblNumberOrder";
-            this.lblNumberOrder.Size = new System.Drawing.Size(106, 20);
+            this.lblNumberOrder.Size = new System.Drawing.Size(82, 15);
             this.lblNumberOrder.TabIndex = 5;
             this.lblNumberOrder.Text = "Номер заказа";
             // 
             // tbNumberOrder
             // 
-            this.tbNumberOrder.Location = new System.Drawing.Point(226, 46);
+            this.tbNumberOrder.Location = new System.Drawing.Point(198, 34);
+            this.tbNumberOrder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbNumberOrder.Name = "tbNumberOrder";
-            this.tbNumberOrder.Size = new System.Drawing.Size(151, 27);
+            this.tbNumberOrder.Size = new System.Drawing.Size(133, 23);
             this.tbNumberOrder.TabIndex = 6;
             // 
             // btSave
             // 
-            this.btSave.Location = new System.Drawing.Point(226, 372);
+            this.btSave.Location = new System.Drawing.Point(198, 279);
+            this.btSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btSave.Name = "btSave";
-            this.btSave.Size = new System.Drawing.Size(94, 29);
+            this.btSave.Size = new System.Drawing.Size(82, 22);
             this.btSave.TabIndex = 18;
             this.btSave.Text = "Сохранить";
             this.btSave.UseVisualStyleBackColor = true;
@@ -90,41 +98,72 @@ namespace Списание_дерева
             // 
             // btCancel
             // 
-            this.btCancel.Location = new System.Drawing.Point(455, 372);
+            this.btCancel.Location = new System.Drawing.Point(398, 279);
+            this.btCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btCancel.Name = "btCancel";
-            this.btCancel.Size = new System.Drawing.Size(94, 29);
+            this.btCancel.Size = new System.Drawing.Size(82, 22);
             this.btCancel.TabIndex = 19;
             this.btCancel.Text = "Отмена";
             this.btCancel.UseVisualStyleBackColor = true;
             this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
             // 
-            // btAddBlank
+            // dGVSize
             // 
-            this.btAddBlank.ForeColor = System.Drawing.Color.LimeGreen;
-            this.btAddBlank.Location = new System.Drawing.Point(400, 104);
-            this.btAddBlank.Name = "btAddBlank";
-            this.btAddBlank.Size = new System.Drawing.Size(25, 29);
-            this.btAddBlank.TabIndex = 20;
-            this.btAddBlank.Text = "+";
-            this.btAddBlank.UseVisualStyleBackColor = true;
-            this.btAddBlank.Click += new System.EventHandler(this.button1_Click);
+            this.dGVSize.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dGVSize.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Length,
+            this.Height,
+            this.Width,
+            this.Amount});
+            this.dGVSize.Location = new System.Drawing.Point(64, 124);
+            this.dGVSize.Name = "dGVSize";
+            this.dGVSize.RowTemplate.Height = 25;
+            this.dGVSize.Size = new System.Drawing.Size(563, 150);
+            this.dGVSize.TabIndex = 21;
+            this.dGVSize.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGVSize_CellContentClick);
+            // 
+            // Length
+            // 
+            this.Length.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Length.HeaderText = "Длина";
+            this.Length.Name = "Length";
+            // 
+            // Height
+            // 
+            this.Height.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Height.HeaderText = "Ширина";
+            this.Height.Name = "Height";
+            // 
+            // Width
+            // 
+            this.Width.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Width.HeaderText = "Высота";
+            this.Width.Name = "Width";
+            // 
+            // Amount
+            // 
+            this.Amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Amount.HeaderText = "Количество";
+            this.Amount.Name = "Amount";
             // 
             // AddForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btAddBlank);
+            this.ClientSize = new System.Drawing.Size(700, 338);
+            this.Controls.Add(this.dGVSize);
             this.Controls.Add(this.btCancel);
             this.Controls.Add(this.btSave);
             this.Controls.Add(this.tbNumberOrder);
             this.Controls.Add(this.lblNumberOrder);
             this.Controls.Add(this.cbModel);
             this.Controls.Add(this.lblModel);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "AddForm";
             this.Text = "Добавление заказа";
             this.Load += new System.EventHandler(this.AddForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dGVSize)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -138,6 +177,10 @@ namespace Списание_дерева
         private System.Windows.Forms.TextBox tbNumberOrder;
         private System.Windows.Forms.Button btSave;
         private System.Windows.Forms.Button btCancel;
-        private System.Windows.Forms.Button btAddBlank;
+        private System.Windows.Forms.DataGridView dGVSize;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Length;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Height;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Width;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
     }
 }
