@@ -87,7 +87,7 @@ namespace Списание_дерева
             // 
             // btSave
             // 
-            this.btSave.Location = new System.Drawing.Point(198, 279);
+            this.btSave.Location = new System.Drawing.Point(198, 305);
             this.btSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btSave.Name = "btSave";
             this.btSave.Size = new System.Drawing.Size(82, 22);
@@ -98,7 +98,7 @@ namespace Списание_дерева
             // 
             // btCancel
             // 
-            this.btCancel.Location = new System.Drawing.Point(398, 279);
+            this.btCancel.Location = new System.Drawing.Point(402, 305);
             this.btCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btCancel.Name = "btCancel";
             this.btCancel.Size = new System.Drawing.Size(82, 22);
@@ -118,7 +118,7 @@ namespace Списание_дерева
             this.dGVSize.Location = new System.Drawing.Point(64, 124);
             this.dGVSize.Name = "dGVSize";
             this.dGVSize.RowTemplate.Height = 25;
-            this.dGVSize.Size = new System.Drawing.Size(563, 150);
+            this.dGVSize.Size = new System.Drawing.Size(563, 164);
             this.dGVSize.TabIndex = 21;
             this.dGVSize.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGVSize_CellContentClick);
             // 
