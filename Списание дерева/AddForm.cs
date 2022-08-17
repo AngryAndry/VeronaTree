@@ -8,6 +8,8 @@ using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Xceed.Document.NET;
+using Xceed.Words.NET;
 using Microsoft.Office.Interop.Word;
 using Списание_дерева.Model;
 
@@ -137,7 +139,7 @@ namespace Списание_дерева
         private  void btSave_Click(object sender, EventArgs e)
         {
            
-            for (int j = 1; j < dGVSize.Rows.Count; j++)
+         /*   for (int j = 1; j < dGVSize.Rows.Count; j++)
             {
                 if (dGVSize.Rows[j].Cells[1].Value != null)
                 {
@@ -149,19 +151,59 @@ namespace Списание_дерева
                     semimanufactures.sizeSemimanufactures.Add(sizeSemimanufactur);
                 }
             }
-
+            */
         
             order = new Order(selectedModel,tbNumberOrder.Text.ToString(),DateTime.Now);
             semimanufactures = new Semimanufactures(selectedTreeSpecies);
             order.semimanufactures.Add(semimanufactures);
              f1.orders.Add(order);
+
+            DocX doc =DocX.Create("test.docx");
+            doc.InsertParagraph("Бланк списания");
+            Xceed.Document.NET.Table t = doc.AddTable( dGVSize.Rows.Count, dGVSize.Columns.Count);
+
+                t.Rows[0].Cells[0].Paragraphs[0].Append("Длина");
+                t.Rows[0].Cells[1].Paragraphs[0].Append("Ширина");
+                t.Rows[0].Cells[2].Paragraphs[0].Append("Высота");
+                t.Rows[0].Cells[3].Paragraphs[0].Append("Количество");
+            for (int j = 0; j < dGVSize.Rows.Count - 1; j++)
+            {
+                for (int k = 0; k < dGVSize.Columns.Count; k++)
+                { 
+                  
+                    t.Rows[j+1].Cells[k].Paragraphs[0].Append(dGVSize.Rows[j].Cells[k].Value.ToString());
+                   // t.Rows[j + 1].Cells[k + 1].Range.Text = dGVSize.Rows[j].Cells[k].Value.ToString();
+
+                }
+
+            }
+            doc.InsertParagraph().InsertTableAfterSelf(t);
+            doc.Save();
+            /*
             Microsoft.Office.Interop.Word.Application app = new Microsoft.Office.Interop.Word.Application();
             Microsoft.Office.Interop.Word.Document doc = app.Documents.Add(Visible: true);
+            Microsoft.Office.Interop.Word.Range r = doc.Range(0,20);
+            Microsoft.Office.Interop.Word.Range h = doc.Range();
+            h.Text = "Бланк списания";
+          //  doc.Paragraphs.Add(1);
+            r.Text = "Бланк списания";
+            Table t = doc.Tables.Add(r, dGVSize.Rows.Count, dGVSize.Columns.Count);
+
+                    for (int j = 0; j < dGVSize.Rows.Count-1; j++) {
+
+                        for (int k = 0; k < dGVSize.Columns.Count; k++)
+                        {
+                            t.Rows[j+1].Cells[k+1].Range.Text = dGVSize.Rows[j].Cells[k].Value.ToString();
+                            
+                        }
+
+                    }
+            //app.Documents.Open(@"C: \Users\Andry\Desktop\Doc1");
             doc.Save();
+           
             doc.Close();
             app.Quit();
-
-
+            */
             f1.PopulateDataGrid(f1.orders);
             
         }

@@ -19,4 +19,8 @@
     </COMReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="DocX" Version="2.2.0" />
+  </ItemGroup>
+
 </Project>
