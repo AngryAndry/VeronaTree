@@ -159,25 +159,44 @@ namespace Списание_дерева
              f1.orders.Add(order);
 
             DocX doc =DocX.Create("test.docx");
-            doc.InsertParagraph("Бланк списания");
-            Xceed.Document.NET.Table t = doc.AddTable( dGVSize.Rows.Count, dGVSize.Columns.Count);
+            doc.InsertParagraph("Заборный лист на древесину для фасадов").FontSize(32).Alignment = Alignment.center; ;
+            doc.InsertParagraph("Модель  "+cbModel.Text+ "           заказ  №"+tbNumberOrder.Text);
+            doc.InsertParagraph("Порода дерева  "+addBlanks[0].cbTreeSpecies.Text);
+            
+            Xceed.Document.NET.Table t = doc.AddTable( dGVSize.Rows.Count, dGVSize.Columns.Count+1);
 
                 t.Rows[0].Cells[0].Paragraphs[0].Append("Длина");
                 t.Rows[0].Cells[1].Paragraphs[0].Append("Ширина");
                 t.Rows[0].Cells[2].Paragraphs[0].Append("Высота");
                 t.Rows[0].Cells[3].Paragraphs[0].Append("Количество");
+                t.Rows[0].Cells[4].Paragraphs[0].Append("Объём");
             for (int j = 0; j < dGVSize.Rows.Count - 1; j++)
             {
-                for (int k = 0; k < dGVSize.Columns.Count; k++)
-                { 
-                  
+                for (int k = 0; k < dGVSize.Columns.Count+1; k++)
+                {
+                    if (k == 4)
+                    {
+                        t.Rows[j + 1].Cells[k].Paragraphs[0].Append((decimal.Parse(dGVSize.Rows[j].Cells[0].Value.ToString())*
+                            decimal.Parse(dGVSize.Rows[j].Cells[1].Value.ToString())* decimal.Parse(dGVSize.Rows[j].Cells[2].Value.ToString())*
+                            decimal.Parse(dGVSize.Rows[j].Cells[3].Value.ToString()) * 0.000000001m).ToString());
+                    }           
+                    else
                     t.Rows[j+1].Cells[k].Paragraphs[0].Append(dGVSize.Rows[j].Cells[k].Value.ToString());
                    // t.Rows[j + 1].Cells[k + 1].Range.Text = dGVSize.Rows[j].Cells[k].Value.ToString();
 
                 }
 
             }
+            
             doc.InsertParagraph().InsertTableAfterSelf(t);
+
+
+            doc.AddFooters();
+
+            doc.DifferentFirstPage = true; 
+            doc.DifferentOddAndEvenPages = true;
+            doc.Footers.First.InsertParagraph("Ответственный______________________________________________________ ").Bold();
+
             doc.Save();
             /*
             Microsoft.Office.Interop.Word.Application app = new Microsoft.Office.Interop.Word.Application();
