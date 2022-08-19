@@ -31,26 +31,23 @@ namespace Списание_дерева
         {
             this.btCancel = new System.Windows.Forms.Button();
             this.btSave = new System.Windows.Forms.Button();
-            this.tbAmount = new System.Windows.Forms.TextBox();
-            this.lblAmount = new System.Windows.Forms.Label();
-            this.lblHeight = new System.Windows.Forms.Label();
-            this.lblWidth = new System.Windows.Forms.Label();
-            this.lblLength = new System.Windows.Forms.Label();
-            this.tbHeight = new System.Windows.Forms.TextBox();
-            this.tbWidth = new System.Windows.Forms.TextBox();
-            this.tbLength = new System.Windows.Forms.TextBox();
-            this.lblSize = new System.Windows.Forms.Label();
             this.cbTreeSpecies = new System.Windows.Forms.ComboBox();
             this.lblTreeSpecies = new System.Windows.Forms.Label();
             this.tbNumberOrder = new System.Windows.Forms.TextBox();
             this.lblNumberOrder = new System.Windows.Forms.Label();
             this.cbModel = new System.Windows.Forms.ComboBox();
             this.lblModel = new System.Windows.Forms.Label();
+            this.dGVSize = new System.Windows.Forms.DataGridView();
+            this.Length = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Height = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Width = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dGVSize)).BeginInit();
             this.SuspendLayout();
             // 
             // btCancel
             // 
-            this.btCancel.Location = new System.Drawing.Point(441, 374);
+            this.btCancel.Location = new System.Drawing.Point(474, 409);
             this.btCancel.Name = "btCancel";
             this.btCancel.Size = new System.Drawing.Size(94, 29);
             this.btCancel.TabIndex = 36;
@@ -59,85 +56,12 @@ namespace Списание_дерева
             // 
             // btSave
             // 
-            this.btSave.Location = new System.Drawing.Point(212, 374);
+            this.btSave.Location = new System.Drawing.Point(212, 409);
             this.btSave.Name = "btSave";
             this.btSave.Size = new System.Drawing.Size(94, 29);
             this.btSave.TabIndex = 35;
             this.btSave.Text = "Сохранить";
             this.btSave.UseVisualStyleBackColor = true;
-            // 
-            // tbAmount
-            // 
-            this.tbAmount.Location = new System.Drawing.Point(212, 267);
-            this.tbAmount.Name = "tbAmount";
-            this.tbAmount.Size = new System.Drawing.Size(151, 27);
-            this.tbAmount.TabIndex = 34;
-            // 
-            // lblAmount
-            // 
-            this.lblAmount.AutoSize = true;
-            this.lblAmount.Location = new System.Drawing.Point(59, 270);
-            this.lblAmount.Name = "lblAmount";
-            this.lblAmount.Size = new System.Drawing.Size(90, 20);
-            this.lblAmount.TabIndex = 33;
-            this.lblAmount.Text = "Количество";
-            // 
-            // lblHeight
-            // 
-            this.lblHeight.AutoSize = true;
-            this.lblHeight.Location = new System.Drawing.Point(591, 189);
-            this.lblHeight.Name = "lblHeight";
-            this.lblHeight.Size = new System.Drawing.Size(93, 20);
-            this.lblHeight.TabIndex = 32;
-            this.lblHeight.Text = "Высота   мм";
-            // 
-            // lblWidth
-            // 
-            this.lblWidth.AutoSize = true;
-            this.lblWidth.Location = new System.Drawing.Point(393, 189);
-            this.lblWidth.Name = "lblWidth";
-            this.lblWidth.Size = new System.Drawing.Size(101, 20);
-            this.lblWidth.TabIndex = 31;
-            this.lblWidth.Text = "Ширина   мм";
-            // 
-            // lblLength
-            // 
-            this.lblLength.AutoSize = true;
-            this.lblLength.Location = new System.Drawing.Point(212, 189);
-            this.lblLength.Name = "lblLength";
-            this.lblLength.Size = new System.Drawing.Size(87, 20);
-            this.lblLength.TabIndex = 30;
-            this.lblLength.Text = "Длина   мм";
-            // 
-            // tbHeight
-            // 
-            this.tbHeight.Location = new System.Drawing.Point(591, 212);
-            this.tbHeight.Name = "tbHeight";
-            this.tbHeight.Size = new System.Drawing.Size(151, 27);
-            this.tbHeight.TabIndex = 29;
-            // 
-            // tbWidth
-            // 
-            this.tbWidth.Location = new System.Drawing.Point(393, 212);
-            this.tbWidth.Name = "tbWidth";
-            this.tbWidth.Size = new System.Drawing.Size(151, 27);
-            this.tbWidth.TabIndex = 28;
-            // 
-            // tbLength
-            // 
-            this.tbLength.Location = new System.Drawing.Point(212, 212);
-            this.tbLength.Name = "tbLength";
-            this.tbLength.Size = new System.Drawing.Size(151, 27);
-            this.tbLength.TabIndex = 27;
-            // 
-            // lblSize
-            // 
-            this.lblSize.AutoSize = true;
-            this.lblSize.Location = new System.Drawing.Point(59, 215);
-            this.lblSize.Name = "lblSize";
-            this.lblSize.Size = new System.Drawing.Size(133, 20);
-            this.lblSize.TabIndex = 26;
-            this.lblSize.Text = "Размер заготовки";
             // 
             // cbTreeSpecies
             // 
@@ -148,7 +72,7 @@ namespace Списание_дерева
             "Липа",
             "Акация ",
             "Дуб"});
-            this.cbTreeSpecies.Location = new System.Drawing.Point(212, 149);
+            this.cbTreeSpecies.Location = new System.Drawing.Point(203, 125);
             this.cbTreeSpecies.Name = "cbTreeSpecies";
             this.cbTreeSpecies.Size = new System.Drawing.Size(151, 28);
             this.cbTreeSpecies.TabIndex = 25;
@@ -156,7 +80,7 @@ namespace Списание_дерева
             // lblTreeSpecies
             // 
             this.lblTreeSpecies.AutoSize = true;
-            this.lblTreeSpecies.Location = new System.Drawing.Point(59, 149);
+            this.lblTreeSpecies.Location = new System.Drawing.Point(59, 125);
             this.lblTreeSpecies.Name = "lblTreeSpecies";
             this.lblTreeSpecies.Size = new System.Drawing.Size(116, 20);
             this.lblTreeSpecies.TabIndex = 24;
@@ -199,22 +123,58 @@ namespace Списание_дерева
             this.lblModel.TabIndex = 20;
             this.lblModel.Text = "Модель";
             // 
+            // dGVSize
+            // 
+            this.dGVSize.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dGVSize.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Length,
+            this.Height,
+            this.Width,
+            this.Amount});
+            this.dGVSize.Location = new System.Drawing.Point(12, 160);
+            this.dGVSize.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dGVSize.Name = "dGVSize";
+            this.dGVSize.RowHeadersWidth = 51;
+            this.dGVSize.RowTemplate.Height = 25;
+            this.dGVSize.Size = new System.Drawing.Size(776, 219);
+            this.dGVSize.TabIndex = 37;
+            // 
+            // Length
+            // 
+            this.Length.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Length.HeaderText = "Длина";
+            this.Length.MinimumWidth = 6;
+            this.Length.Name = "Length";
+            // 
+            // Height
+            // 
+            this.Height.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Height.HeaderText = "Ширина";
+            this.Height.MinimumWidth = 6;
+            this.Height.Name = "Height";
+            // 
+            // Width
+            // 
+            this.Width.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Width.HeaderText = "Высота";
+            this.Width.MinimumWidth = 6;
+            this.Width.Name = "Width";
+            // 
+            // Amount
+            // 
+            this.Amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Amount.HeaderText = "Количество";
+            this.Amount.MinimumWidth = 6;
+            this.Amount.Name = "Amount";
+            // 
             // FormOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dGVSize);
             this.Controls.Add(this.btCancel);
             this.Controls.Add(this.btSave);
-            this.Controls.Add(this.tbAmount);
-            this.Controls.Add(this.lblAmount);
-            this.Controls.Add(this.lblHeight);
-            this.Controls.Add(this.lblWidth);
-            this.Controls.Add(this.lblLength);
-            this.Controls.Add(this.tbHeight);
-            this.Controls.Add(this.tbWidth);
-            this.Controls.Add(this.tbLength);
-            this.Controls.Add(this.lblSize);
             this.Controls.Add(this.cbTreeSpecies);
             this.Controls.Add(this.lblTreeSpecies);
             this.Controls.Add(this.tbNumberOrder);
@@ -224,6 +184,7 @@ namespace Списание_дерева
             this.Name = "FormOrder";
             this.Text = "Заказ";
             this.Load += new System.EventHandler(this.FormOrder_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dGVSize)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -233,20 +194,16 @@ namespace Списание_дерева
 
         private System.Windows.Forms.Button btCancel;
         private System.Windows.Forms.Button btSave;
-        private System.Windows.Forms.TextBox tbAmount;
-        private System.Windows.Forms.Label lblAmount;
-        private System.Windows.Forms.Label lblHeight;
-        private System.Windows.Forms.Label lblWidth;
-        private System.Windows.Forms.Label lblLength;
-        private System.Windows.Forms.TextBox tbHeight;
-        private System.Windows.Forms.TextBox tbWidth;
-        private System.Windows.Forms.TextBox tbLength;
-        private System.Windows.Forms.Label lblSize;
         private System.Windows.Forms.ComboBox cbTreeSpecies;
         private System.Windows.Forms.Label lblTreeSpecies;
         private System.Windows.Forms.TextBox tbNumberOrder;
         private System.Windows.Forms.Label lblNumberOrder;
         private System.Windows.Forms.ComboBox cbModel;
         private System.Windows.Forms.Label lblModel;
+        private System.Windows.Forms.DataGridView dGVSize;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Length;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Height;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Width;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
     }
 }

@@ -21,6 +21,8 @@
 
   <ItemGroup>
     <PackageReference Include="DocX" Version="2.2.0" />
+    <PackageReference Include="FreeSpire.Doc" Version="10.8.0" />
+    <PackageReference Include="GemBox.Document" Version="35.0.1076" />
   </ItemGroup>
 
 </Project>

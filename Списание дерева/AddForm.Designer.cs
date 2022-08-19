@@ -41,15 +41,17 @@ namespace Списание_дерева
             this.Height = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Width = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.btSaveAndPrint = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dGVSize)).BeginInit();
             this.SuspendLayout();
             // 
             // lblModel
             // 
             this.lblModel.AutoSize = true;
-            this.lblModel.Location = new System.Drawing.Point(425, 37);
+            this.lblModel.Location = new System.Drawing.Point(486, 49);
             this.lblModel.Name = "lblModel";
-            this.lblModel.Size = new System.Drawing.Size(50, 15);
+            this.lblModel.Size = new System.Drawing.Size(63, 20);
             this.lblModel.TabIndex = 0;
             this.lblModel.Text = "Модель";
             this.lblModel.Click += new System.EventHandler(this.label1_Click);
@@ -61,36 +63,34 @@ namespace Списание_дерева
             "Unica",
             "Lady",
             "Kreola"});
-            this.cbModel.Location = new System.Drawing.Point(494, 34);
-            this.cbModel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbModel.Location = new System.Drawing.Point(565, 45);
             this.cbModel.Name = "cbModel";
-            this.cbModel.Size = new System.Drawing.Size(133, 23);
+            this.cbModel.Size = new System.Drawing.Size(151, 28);
             this.cbModel.TabIndex = 4;
             this.cbModel.SelectedIndexChanged += new System.EventHandler(this.cbModel_SelectedIndexChanged);
             // 
             // lblNumberOrder
             // 
             this.lblNumberOrder.AutoSize = true;
-            this.lblNumberOrder.Location = new System.Drawing.Point(64, 37);
+            this.lblNumberOrder.Location = new System.Drawing.Point(73, 49);
             this.lblNumberOrder.Name = "lblNumberOrder";
-            this.lblNumberOrder.Size = new System.Drawing.Size(82, 15);
+            this.lblNumberOrder.Size = new System.Drawing.Size(106, 20);
             this.lblNumberOrder.TabIndex = 5;
             this.lblNumberOrder.Text = "Номер заказа";
             // 
             // tbNumberOrder
             // 
-            this.tbNumberOrder.Location = new System.Drawing.Point(198, 34);
-            this.tbNumberOrder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbNumberOrder.Location = new System.Drawing.Point(226, 45);
             this.tbNumberOrder.Name = "tbNumberOrder";
-            this.tbNumberOrder.Size = new System.Drawing.Size(133, 23);
+            this.tbNumberOrder.Size = new System.Drawing.Size(151, 27);
             this.tbNumberOrder.TabIndex = 6;
             // 
             // btSave
             // 
-            this.btSave.Location = new System.Drawing.Point(198, 305);
-            this.btSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btSave.Location = new System.Drawing.Point(283, 407);
             this.btSave.Name = "btSave";
-            this.btSave.Size = new System.Drawing.Size(82, 22);
+            this.btSave.Size = new System.Drawing.Size(94, 29);
             this.btSave.TabIndex = 18;
             this.btSave.Text = "Сохранить";
             this.btSave.UseVisualStyleBackColor = true;
@@ -98,10 +98,10 @@ namespace Списание_дерева
             // 
             // btCancel
             // 
-            this.btCancel.Location = new System.Drawing.Point(402, 305);
-            this.btCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btCancel.Location = new System.Drawing.Point(459, 407);
             this.btCancel.Name = "btCancel";
-            this.btCancel.Size = new System.Drawing.Size(82, 22);
+            this.btCancel.Size = new System.Drawing.Size(94, 29);
             this.btCancel.TabIndex = 19;
             this.btCancel.Text = "Отмена";
             this.btCancel.UseVisualStyleBackColor = true;
@@ -109,49 +109,72 @@ namespace Списание_дерева
             // 
             // dGVSize
             // 
+            this.dGVSize.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dGVSize.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dGVSize.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Length,
             this.Height,
             this.Width,
             this.Amount});
-            this.dGVSize.Location = new System.Drawing.Point(64, 124);
+            this.dGVSize.Location = new System.Drawing.Point(12, 165);
+            this.dGVSize.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dGVSize.Name = "dGVSize";
+            this.dGVSize.RowHeadersWidth = 51;
             this.dGVSize.RowTemplate.Height = 25;
-            this.dGVSize.Size = new System.Drawing.Size(563, 164);
+            this.dGVSize.Size = new System.Drawing.Size(776, 219);
             this.dGVSize.TabIndex = 21;
-            this.dGVSize.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGVSize_CellContentClick);
+            
+            this.dGVSize.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dGVSize_CellValidating);
+            this.dGVSize.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbWidth_KeyPress);
             // 
             // Length
             // 
             this.Length.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Length.HeaderText = "Длина";
+            this.Length.MinimumWidth = 6;
             this.Length.Name = "Length";
             // 
             // Height
             // 
             this.Height.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Height.HeaderText = "Ширина";
+            this.Height.MinimumWidth = 6;
             this.Height.Name = "Height";
             // 
             // Width
             // 
             this.Width.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Width.HeaderText = "Высота";
+            this.Width.MinimumWidth = 6;
             this.Width.Name = "Width";
             // 
             // Amount
             // 
             this.Amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Amount.HeaderText = "Количество";
+            this.Amount.MinimumWidth = 6;
             this.Amount.Name = "Amount";
+            // 
+            // btSaveAndPrint
+            // 
+            this.btSaveAndPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btSaveAndPrint.Location = new System.Drawing.Point(30, 407);
+            this.btSaveAndPrint.Name = "btSaveAndPrint";
+            this.btSaveAndPrint.Size = new System.Drawing.Size(221, 29);
+            this.btSaveAndPrint.TabIndex = 22;
+            this.btSaveAndPrint.Text = "Сохранить и распечатать";
+            this.btSaveAndPrint.UseVisualStyleBackColor = true;
+            this.btSaveAndPrint.Click += new System.EventHandler(this.btSaveAndPrint_Click);
             // 
             // AddForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(700, 338);
+            this.ClientSize = new System.Drawing.Size(800, 451);
+            this.Controls.Add(this.btSaveAndPrint);
             this.Controls.Add(this.dGVSize);
             this.Controls.Add(this.btCancel);
             this.Controls.Add(this.btSave);
@@ -159,7 +182,6 @@ namespace Списание_дерева
             this.Controls.Add(this.lblNumberOrder);
             this.Controls.Add(this.cbModel);
             this.Controls.Add(this.lblModel);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "AddForm";
             this.Text = "Добавление заказа";
             this.Load += new System.EventHandler(this.AddForm_Load);
@@ -182,5 +204,7 @@ namespace Списание_дерева
         private System.Windows.Forms.DataGridViewTextBoxColumn Height;
         private System.Windows.Forms.DataGridViewTextBoxColumn Width;
         private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.Button btSaveAndPrint;
     }
 }
