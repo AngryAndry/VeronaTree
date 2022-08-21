@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,10 +17,11 @@ namespace Списание_дерева
        public List<Order> orders = new List<Order>();
         public Form1()
         {
-            
+
             InitializeComponent();
             
             PopulateDataGrid(orders);
+
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -39,6 +41,7 @@ namespace Списание_дерева
                 dataGridView1.Rows.Add(item.numberOrder,item.model);
                 
             }
+
         }
         private void button1_Click(object sender, EventArgs e)
         {

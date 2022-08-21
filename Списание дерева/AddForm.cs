@@ -18,6 +18,8 @@ using System.Drawing.Printing;
 using Spire.Doc;
 using System.Diagnostics;
 using GemBox.Document;
+using Microsoft.VisualBasic.ApplicationServices;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Списание_дерева
 {
@@ -37,7 +39,7 @@ namespace Списание_дерева
         {
             InitializeComponent();
             cbModel.SelectedIndexChanged += cbModel_SelectedIndexChanged;
-            //cbTreeSpecies.SelectedIndexChanged += cbTreeSpecies_SelectedIndexChanged;
+            cbTreeSpecies.SelectedIndexChanged += cbTreeSpecies_SelectedIndexChanged;
         }
 
         public AddForm(Form1 form1)
@@ -47,12 +49,7 @@ namespace Списание_дерева
 
             i = 0;
             f1 = form1;
-            AddBlank addBlank = new();
-            addBlank.lblTreeSpecies.Location = new System.Drawing.Point(68, 95);
-            addBlank.cbTreeSpecies.Location = new System.Drawing.Point(200, 95);            
-            this.Controls.Add(addBlank.lblTreeSpecies);
-            this.Controls.Add(addBlank.cbTreeSpecies);
-            addBlanks.Add(addBlank);
+           
         }
 
         private void AddForm_Load(object sender, EventArgs e)
@@ -159,7 +156,7 @@ namespace Списание_дерева
                 }
             }
             
-            order.semimanufactures.Add(semimanufactures);
+         //   order.semimanufactures.Add(semimanufactures);
 
              f1.orders.Add(order);
             using (DocX doc = DocX.Create("test.docx"))
@@ -243,7 +240,7 @@ namespace Списание_дерева
 
         private void cbTreeSpecies_SelectedIndexChanged(object sender, EventArgs e)
         {
-        //     selectedTreeSpecies = cbTreeSpecies.SelectedItem.ToString();
+            selectedTreeSpecies = cbTreeSpecies.SelectedItem.ToString();
             
         }
 
@@ -292,9 +289,38 @@ namespace Списание_дерева
                     semimanufactures.sizeSemimanufactures.Add(sizeSemimanufactur);
                 }
             }
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                
 
-            order.semimanufactures.Add(semimanufactures);
-
+                // создание и добавление моделей
+                Order order = new Order { numberOrder = tbNumberOrder.Text.ToString(), model =selectedModel, date =DateTime.Now.ToString() };
+                
+                db.Orders.AddRange(order);
+               
+                Semimanufactures semimanufactures = new Semimanufactures { treeSpecies = selectedTreeSpecies , order = order };
+                db.semimanufactures.AddRange(semimanufactures);
+                List<SizeSemimanufactures> sizeSemimanufactures1 = new ();
+                for (int i = 0; i < dGVSize.Rows.Count-1; i++)
+                {
+                
+                SizeSemimanufactures sizeSemimanufactures = new SizeSemimanufactures { semimanufactures =semimanufactures,
+                    amount = Int32.Parse(dGVSize.Rows[i].Cells[0].Value.ToString())
+                ,
+                    length = Int32.Parse(dGVSize.Rows[i].Cells[1].Value.ToString())
+                ,
+                    width = Int32.Parse(dGVSize.Rows[i].Cells[2].Value.ToString())
+                ,
+                    height = Int32.Parse(dGVSize.Rows[i].Cells[3].Value.ToString())
+                };
+                    sizeSemimanufactures1.Add(sizeSemimanufactures);
+                }
+                
+                db.sizeSemimanufactures.AddRange(sizeSemimanufactures1);
+                db.SaveChanges();
+            }
+            // order.semimanufactures.Add(semimanufactures);
+            
             f1.orders.Add(order);
             using (DocX doc = DocX.Create("test.docx"))
             {
@@ -313,7 +339,7 @@ namespace Списание_дерева
 
                 paragraph.AppendLine();
                 paragraph.Append("Порода дерева :  ").FontSize(14).Alignment = Alignment.left;
-                paragraph.Append(addBlanks[0].cbTreeSpecies.Text).FontSize(14).Bold().Alignment = Alignment.left;
+                paragraph.Append(selectedTreeSpecies).FontSize(14).Bold().Alignment = Alignment.left;
 
 
 

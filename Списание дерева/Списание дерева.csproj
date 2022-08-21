@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net5.0-windows</TargetFramework>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <RootNamespace>Списание_дерева</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
@@ -23,6 +23,7 @@
     <PackageReference Include="DocX" Version="2.2.0" />
     <PackageReference Include="FreeSpire.Doc" Version="10.8.0" />
     <PackageReference Include="GemBox.Document" Version="35.0.1076" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.8" />
   </ItemGroup>
 
 </Project>

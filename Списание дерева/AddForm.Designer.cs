@@ -43,6 +43,8 @@ namespace Списание_дерева
             this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.btSaveAndPrint = new System.Windows.Forms.Button();
+            this.cbTreeSpecies = new System.Windows.Forms.ComboBox();
+            this.lblTreeSpecies = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dGVSize)).BeginInit();
             this.SuspendLayout();
             // 
@@ -125,7 +127,6 @@ namespace Списание_дерева
             this.dGVSize.RowTemplate.Height = 25;
             this.dGVSize.Size = new System.Drawing.Size(776, 219);
             this.dGVSize.TabIndex = 21;
-            
             this.dGVSize.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dGVSize_CellValidating);
             this.dGVSize.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbWidth_KeyPress);
             // 
@@ -168,12 +169,38 @@ namespace Списание_дерева
             this.btSaveAndPrint.UseVisualStyleBackColor = true;
             this.btSaveAndPrint.Click += new System.EventHandler(this.btSaveAndPrint_Click);
             // 
+            // cbTreeSpecies
+            // 
+            this.cbTreeSpecies.FormattingEnabled = true;
+            this.cbTreeSpecies.Items.AddRange(new object[] {
+            "Ясень",
+            "Ольха ",
+            "Липа",
+            "Акация ",
+            "Дуб"});
+            this.cbTreeSpecies.Location = new System.Drawing.Point(226, 110);
+            this.cbTreeSpecies.Name = "cbTreeSpecies";
+            this.cbTreeSpecies.Size = new System.Drawing.Size(151, 28);
+            this.cbTreeSpecies.TabIndex = 27;
+            this.cbTreeSpecies.SelectedIndexChanged += new System.EventHandler(this.cbTreeSpecies_SelectedIndexChanged);
+            // 
+            // lblTreeSpecies
+            // 
+            this.lblTreeSpecies.AutoSize = true;
+            this.lblTreeSpecies.Location = new System.Drawing.Point(73, 110);
+            this.lblTreeSpecies.Name = "lblTreeSpecies";
+            this.lblTreeSpecies.Size = new System.Drawing.Size(116, 20);
+            this.lblTreeSpecies.TabIndex = 26;
+            this.lblTreeSpecies.Text = "Порода дерева";
+            // 
             // AddForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(800, 451);
+            this.Controls.Add(this.cbTreeSpecies);
+            this.Controls.Add(this.lblTreeSpecies);
             this.Controls.Add(this.btSaveAndPrint);
             this.Controls.Add(this.dGVSize);
             this.Controls.Add(this.btCancel);
@@ -206,5 +233,7 @@ namespace Списание_дерева
         private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.Button btSaveAndPrint;
+        private System.Windows.Forms.ComboBox cbTreeSpecies;
+        private System.Windows.Forms.Label lblTreeSpecies;
     }
 }

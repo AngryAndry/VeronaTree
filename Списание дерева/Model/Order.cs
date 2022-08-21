@@ -8,10 +8,11 @@ namespace Списание_дерева.Model
 {
     public class Order
     {
+        public int Id { get; set; }
+        public string? numberOrder { get; set; }
+        public string? model { get; set; }
+        public string? date { get; set; }
         
-        public string model { get; set; }
-        public string numberOrder { get; set; }
-        public DateTime date { get; set; }
         public List<Semimanufactures> semimanufactures = new List<Semimanufactures>();
         /*public string treeSpecies { get; set; }
         public int length { get; set; }
@@ -23,12 +24,16 @@ namespace Списание_дерева.Model
         {
             model = _model;
             numberOrder = _numberOrder;
-            date = _date;
+           // date = _date;
         
           /*  treeSpecies = _numberOrder;
             length = _length;
             width = _width;
             amount = _amouunt;*/
+        }
+        public Order()
+        {
+            
         }
     }
 }
