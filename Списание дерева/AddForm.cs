@@ -139,26 +139,40 @@ namespace Списание_дерева
       
         private  void btSave_Click(object sender, EventArgs e)
         {
-          
-        
-            order = new Order(selectedModel,tbNumberOrder.Text.ToString(),DateTime.Now);
-            semimanufactures = new Semimanufactures(selectedTreeSpecies);
-            for (int j = 1; j < dGVSize.Rows.Count; j++)
-            {
-                if (dGVSize.Rows[j].Cells[1].Value != null)
-                {
-                    SizeSemimanufactures sizeSemimanufactur = new SizeSemimanufactures(Int32.Parse(dGVSize.Rows[j].Cells[0].Value.ToString()),
-                        Int32.Parse(dGVSize.Rows[j].Cells[1].Value.ToString()),
-                        Int32.Parse(dGVSize.Rows[j].Cells[2].Value.ToString()),
-                        Int32.Parse(dGVSize.Rows[j].Cells[3].Value.ToString())
-                        );
-                    semimanufactures.sizeSemimanufactures.Add(sizeSemimanufactur);
-                }
-            }
-            
-         //   order.semimanufactures.Add(semimanufactures);
 
-             f1.orders.Add(order);
+            using (ApplicationContext db = new ApplicationContext())
+            {
+
+
+                // создание и добавление моделей
+                Order order = new Order { numberOrder = tbNumberOrder.Text.ToString(), model = selectedModel, date = DateTime.Now.ToString() };
+
+                db.Orders.AddRange(order);
+
+                Semimanufactures semimanufactures = new Semimanufactures { treeSpecies = selectedTreeSpecies, order = order };
+                db.semimanufactures.AddRange(semimanufactures);
+                List<SizeSemimanufactures> sizeSemimanufactures1 = new();
+                for (int i = 0; i < dGVSize.Rows.Count - 1; i++)
+                {
+
+                    SizeSemimanufactures sizeSemimanufactures = new SizeSemimanufactures
+                    {
+                        semimanufactures = semimanufactures,
+                        amount = Int32.Parse(dGVSize.Rows[i].Cells[0].Value.ToString())
+                    ,
+                        length = Int32.Parse(dGVSize.Rows[i].Cells[1].Value.ToString())
+                    ,
+                        width = Int32.Parse(dGVSize.Rows[i].Cells[2].Value.ToString())
+                    ,
+                        height = Int32.Parse(dGVSize.Rows[i].Cells[3].Value.ToString())
+                    };
+                    sizeSemimanufactures1.Add(sizeSemimanufactures);
+                }
+
+                db.sizeSemimanufactures.AddRange(sizeSemimanufactures1);
+                db.SaveChanges();
+            }
+           
             using (DocX doc = DocX.Create("test.docx"))
             {
 
@@ -228,7 +242,7 @@ namespace Списание_дерева
                
             }
        
-            f1.PopulateDataGrid(f1.orders);
+            f1.PopulateDataGrid();
           
         
         }
@@ -275,20 +289,7 @@ namespace Списание_дерева
 
         private void btSaveAndPrint_Click(object sender, EventArgs e)
         {
-            order = new Order(selectedModel, tbNumberOrder.Text.ToString(), DateTime.Now);
-            semimanufactures = new Semimanufactures(selectedTreeSpecies);
-            for (int j = 1; j < dGVSize.Rows.Count; j++)
-            {
-                if (dGVSize.Rows[j].Cells[1].Value != null)
-                {
-                    SizeSemimanufactures sizeSemimanufactur = new SizeSemimanufactures(Int32.Parse(dGVSize.Rows[j].Cells[0].Value.ToString()),
-                        Int32.Parse(dGVSize.Rows[j].Cells[1].Value.ToString()),
-                        Int32.Parse(dGVSize.Rows[j].Cells[2].Value.ToString()),
-                        Int32.Parse(dGVSize.Rows[j].Cells[3].Value.ToString())
-                        );
-                    semimanufactures.sizeSemimanufactures.Add(sizeSemimanufactur);
-                }
-            }
+          
             using (ApplicationContext db = new ApplicationContext())
             {
                 
@@ -319,9 +320,9 @@ namespace Списание_дерева
                 db.sizeSemimanufactures.AddRange(sizeSemimanufactures1);
                 db.SaveChanges();
             }
-            // order.semimanufactures.Add(semimanufactures);
+           
             
-            f1.orders.Add(order);
+           
             using (DocX doc = DocX.Create("test.docx"))
             {
 
@@ -396,9 +397,9 @@ namespace Списание_дерева
 
 
 
-            f1.PopulateDataGrid(f1.orders);
+            f1.PopulateDataGrid();
             DocumentModel.Load(fullname, LoadOptions.DocxDefault).Print();
-           
+            this.Close();
         }
 
         private void dGVSize_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)

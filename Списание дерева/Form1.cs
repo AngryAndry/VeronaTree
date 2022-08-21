@@ -20,32 +20,44 @@ namespace Списание_дерева
 
             InitializeComponent();
             
-            PopulateDataGrid(orders);
+            PopulateDataGrid();
 
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+         
         }
-        public void PopulateDataGrid(List<Order> record)
+        public void PopulateDataGrid()
         {
             dataGridView1.Rows.Clear();
-            if (record == null)
-            {
-                return;
-            }
-            foreach (var item in record)
-            {
 
-                dataGridView1.Rows.Add(item.numberOrder,item.model);
-                
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                var order = db.Orders.ToList();
+                if (order == null)
+                {
+                    return;
+                }
+                foreach (var item in order)
+                {
+
+                    dataGridView1.Rows.Add(item.numberOrder, item.model);
+
+                }
             }
 
         }
         private void button1_Click(object sender, EventArgs e)
         {
            AddForm formAdd = new AddForm(this);
+
+            formAdd.Show();
+        }
+
+        private void dataGridView1_DoubleClick(object sender, EventArgs e)
+        {
+            FormOrder formAdd = new FormOrder(this);
 
             formAdd.Show();
         }
