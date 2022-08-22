@@ -51,9 +51,9 @@ namespace Списание_дерева
             // lblModel
             // 
             this.lblModel.AutoSize = true;
-            this.lblModel.Location = new System.Drawing.Point(486, 49);
+            this.lblModel.Location = new System.Drawing.Point(425, 37);
             this.lblModel.Name = "lblModel";
-            this.lblModel.Size = new System.Drawing.Size(63, 20);
+            this.lblModel.Size = new System.Drawing.Size(50, 15);
             this.lblModel.TabIndex = 0;
             this.lblModel.Text = "Модель";
             this.lblModel.Click += new System.EventHandler(this.label1_Click);
@@ -64,35 +64,50 @@ namespace Списание_дерева
             this.cbModel.Items.AddRange(new object[] {
             "Unica",
             "Lady",
-            "Kreola"});
-            this.cbModel.Location = new System.Drawing.Point(565, 45);
+            "Kreola",
+            "Victoria",
+            "Cristina",
+            "Naomi",
+            "Vintage",
+            "Grazia",
+            "Karmen",
+            "Valeriana",
+            "Lea",
+            "Asty",
+            "Country",
+            "НСТ",
+            "___"});
+            this.cbModel.Location = new System.Drawing.Point(494, 34);
+            this.cbModel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbModel.Name = "cbModel";
-            this.cbModel.Size = new System.Drawing.Size(151, 28);
+            this.cbModel.Size = new System.Drawing.Size(133, 23);
             this.cbModel.TabIndex = 4;
             this.cbModel.SelectedIndexChanged += new System.EventHandler(this.cbModel_SelectedIndexChanged);
             // 
             // lblNumberOrder
             // 
             this.lblNumberOrder.AutoSize = true;
-            this.lblNumberOrder.Location = new System.Drawing.Point(73, 49);
+            this.lblNumberOrder.Location = new System.Drawing.Point(64, 37);
             this.lblNumberOrder.Name = "lblNumberOrder";
-            this.lblNumberOrder.Size = new System.Drawing.Size(106, 20);
+            this.lblNumberOrder.Size = new System.Drawing.Size(82, 15);
             this.lblNumberOrder.TabIndex = 5;
             this.lblNumberOrder.Text = "Номер заказа";
             // 
             // tbNumberOrder
             // 
-            this.tbNumberOrder.Location = new System.Drawing.Point(226, 45);
+            this.tbNumberOrder.Location = new System.Drawing.Point(198, 34);
+            this.tbNumberOrder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbNumberOrder.Name = "tbNumberOrder";
-            this.tbNumberOrder.Size = new System.Drawing.Size(151, 27);
+            this.tbNumberOrder.Size = new System.Drawing.Size(133, 23);
             this.tbNumberOrder.TabIndex = 6;
             // 
             // btSave
             // 
             this.btSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btSave.Location = new System.Drawing.Point(283, 407);
+            this.btSave.Location = new System.Drawing.Point(248, 305);
+            this.btSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btSave.Name = "btSave";
-            this.btSave.Size = new System.Drawing.Size(94, 29);
+            this.btSave.Size = new System.Drawing.Size(82, 22);
             this.btSave.TabIndex = 18;
             this.btSave.Text = "Сохранить";
             this.btSave.UseVisualStyleBackColor = true;
@@ -101,9 +116,10 @@ namespace Списание_дерева
             // btCancel
             // 
             this.btCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btCancel.Location = new System.Drawing.Point(459, 407);
+            this.btCancel.Location = new System.Drawing.Point(402, 305);
+            this.btCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btCancel.Name = "btCancel";
-            this.btCancel.Size = new System.Drawing.Size(94, 29);
+            this.btCancel.Size = new System.Drawing.Size(82, 22);
             this.btCancel.TabIndex = 19;
             this.btCancel.Text = "Отмена";
             this.btCancel.UseVisualStyleBackColor = true;
@@ -120,12 +136,11 @@ namespace Списание_дерева
             this.Height,
             this.Width,
             this.Amount});
-            this.dGVSize.Location = new System.Drawing.Point(12, 165);
-            this.dGVSize.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dGVSize.Location = new System.Drawing.Point(10, 124);
             this.dGVSize.Name = "dGVSize";
             this.dGVSize.RowHeadersWidth = 51;
             this.dGVSize.RowTemplate.Height = 25;
-            this.dGVSize.Size = new System.Drawing.Size(776, 219);
+            this.dGVSize.Size = new System.Drawing.Size(679, 164);
             this.dGVSize.TabIndex = 21;
             this.dGVSize.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dGVSize_CellValidating);
             this.dGVSize.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbWidth_KeyPress);
@@ -161,9 +176,10 @@ namespace Списание_дерева
             // btSaveAndPrint
             // 
             this.btSaveAndPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btSaveAndPrint.Location = new System.Drawing.Point(30, 407);
+            this.btSaveAndPrint.Location = new System.Drawing.Point(26, 305);
+            this.btSaveAndPrint.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btSaveAndPrint.Name = "btSaveAndPrint";
-            this.btSaveAndPrint.Size = new System.Drawing.Size(221, 29);
+            this.btSaveAndPrint.Size = new System.Drawing.Size(193, 22);
             this.btSaveAndPrint.TabIndex = 22;
             this.btSaveAndPrint.Text = "Сохранить и распечатать";
             this.btSaveAndPrint.UseVisualStyleBackColor = true;
@@ -178,27 +194,28 @@ namespace Списание_дерева
             "Липа",
             "Акация ",
             "Дуб"});
-            this.cbTreeSpecies.Location = new System.Drawing.Point(226, 110);
+            this.cbTreeSpecies.Location = new System.Drawing.Point(198, 82);
+            this.cbTreeSpecies.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbTreeSpecies.Name = "cbTreeSpecies";
-            this.cbTreeSpecies.Size = new System.Drawing.Size(151, 28);
+            this.cbTreeSpecies.Size = new System.Drawing.Size(133, 23);
             this.cbTreeSpecies.TabIndex = 27;
             this.cbTreeSpecies.SelectedIndexChanged += new System.EventHandler(this.cbTreeSpecies_SelectedIndexChanged);
             // 
             // lblTreeSpecies
             // 
             this.lblTreeSpecies.AutoSize = true;
-            this.lblTreeSpecies.Location = new System.Drawing.Point(73, 110);
+            this.lblTreeSpecies.Location = new System.Drawing.Point(64, 82);
             this.lblTreeSpecies.Name = "lblTreeSpecies";
-            this.lblTreeSpecies.Size = new System.Drawing.Size(116, 20);
+            this.lblTreeSpecies.Size = new System.Drawing.Size(89, 15);
             this.lblTreeSpecies.TabIndex = 26;
             this.lblTreeSpecies.Text = "Порода дерева";
             // 
             // AddForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(800, 451);
+            this.ClientSize = new System.Drawing.Size(700, 338);
             this.Controls.Add(this.cbTreeSpecies);
             this.Controls.Add(this.lblTreeSpecies);
             this.Controls.Add(this.btSaveAndPrint);
@@ -209,6 +226,7 @@ namespace Списание_дерева
             this.Controls.Add(this.lblNumberOrder);
             this.Controls.Add(this.cbModel);
             this.Controls.Add(this.lblModel);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "AddForm";
             this.Text = "Добавление заказа";
             this.Load += new System.EventHandler(this.AddForm_Load);

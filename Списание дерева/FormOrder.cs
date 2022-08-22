@@ -26,8 +26,8 @@ namespace Списание_дерева
             using (ApplicationContext db = new ApplicationContext())
             {
                 //var order = db.Orders.ToList();
-               // var order = db.semimanufactures.Include(u => u.treeSpecies).ToList();
-                //cbTreeSpecies.Text = order[0].ToString()
+                var order = db.semimanufactures.Include(u => u.treeSpecies).ToList();
+                cbTreeSpecies.Text = order[0].ToString()
 ;            }
         }
 
