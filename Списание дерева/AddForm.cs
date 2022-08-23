@@ -190,7 +190,8 @@ namespace Списание_дерева
 
                 paragraph.AppendLine();
                 paragraph.Append("Порода дерева :  ").FontSize(14).Alignment = Alignment.left;
-                paragraph.Append(addBlanks[0].cbTreeSpecies.Text).FontSize(14).Bold().Alignment = Alignment.left;
+                paragraph.Append(selectedTreeSpecies).FontSize(14).Bold().Alignment = Alignment.left;
+
 
 
 

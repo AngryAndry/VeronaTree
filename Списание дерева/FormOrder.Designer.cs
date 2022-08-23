@@ -183,7 +183,6 @@ namespace Списание_дерева
             this.Controls.Add(this.lblModel);
             this.Name = "FormOrder";
             this.Text = "Заказ";
-            this.Load += new System.EventHandler(this.FormOrder_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dGVSize)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
