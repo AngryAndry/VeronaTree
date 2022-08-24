@@ -173,78 +173,10 @@ namespace Списание_дерева
                 db.SaveChanges();
             }
            
-            using (DocX doc = DocX.Create("test.docx"))
-            {
-
-                doc.InsertParagraph("Заборный лист на древесину для фасадов").FontSize(20).Bold().Alignment = Alignment.center;
-                Xceed.Document.NET.Paragraph paragraph = doc.InsertParagraph();
-                paragraph.Alignment = Alignment.right;
-                paragraph.AppendLine();
-
-                paragraph.Append("Модель :  ").FontSize(14).Alignment = Alignment.left;
-                paragraph.Append(cbModel.Text).FontSize(14).Bold().Alignment = Alignment.left;
-
-                paragraph.AppendLine();
-                paragraph.Append("Заказ :  №").FontSize(14).Alignment = Alignment.left;
-                paragraph.Append(tbNumberOrder.Text).FontSize(14).Bold().Alignment = Alignment.left;
-
-                paragraph.AppendLine();
-                paragraph.Append("Порода дерева :  ").FontSize(14).Alignment = Alignment.left;
-                paragraph.Append(selectedTreeSpecies).FontSize(14).Bold().Alignment = Alignment.left;
-
-
-
-
-
-
-
-                Xceed.Document.NET.Table t = doc.AddTable(dGVSize.Rows.Count, dGVSize.Columns.Count + 1);
-
-                t.Rows[0].Cells[0].Paragraphs[0].Append("Длина  ММ");
-                t.Rows[0].Cells[1].Paragraphs[0].Append("Ширина  ММ");
-                t.Rows[0].Cells[2].Paragraphs[0].Append("Высота  ММ");
-                t.Rows[0].Cells[3].Paragraphs[0].Append("Количество ШТ");
-                t.Rows[0].Cells[4].Paragraphs[0].Append("Объём  М3");
-                List<Decimal> v = new List<decimal>();
-                Decimal val;
-                for (int j = 0; j < dGVSize.Rows.Count - 1; j++)
-                {
-                    for (int k = 0; k < dGVSize.Columns.Count + 1; k++)
-                    {
-                        if (k == 4)
-                        {
-                            val = decimal.Parse(dGVSize.Rows[j].Cells[0].Value.ToString()) *
-                                   decimal.Parse(dGVSize.Rows[j].Cells[1].Value.ToString()) * decimal.Parse(dGVSize.Rows[j].Cells[2].Value.ToString()) *
-                                   decimal.Parse(dGVSize.Rows[j].Cells[3].Value.ToString()) * 0.000000001m;
-                            t.Rows[j + 1].Cells[k].Paragraphs[0].Append((val).ToString());
-                            v.Add(val);
-                        }
-                        else
-                            t.Rows[j + 1].Cells[k].Paragraphs[0].Append(dGVSize.Rows[j].Cells[k].Value.ToString());
-                        // t.Rows[j + 1].Cells[k + 1].Range.Text = dGVSize.Rows[j].Cells[k].Value.ToString();
-
-                    }
-
-                }
-                val = 0;
-                doc.InsertParagraph().InsertTableAfterSelf(t);
-                foreach (var i in v)
-                {
-                    val += i;
-                }
-
-                doc.InsertParagraph("Общий объём = " + val).Bold().Alignment = Alignment.right;
-                doc.AddFooters();
-
-                doc.DifferentFirstPage = true;
-                doc.DifferentOddAndEvenPages = true;
-                doc.Footers.First.InsertParagraph("Ответственный___________________________________________________     " + DateTime.Now).FontSize(12).Bold().Alignment = Alignment.left;
-                doc.Save();
-               
-            }
+           
        
             f1.PopulateDataGrid();
-          
+          this.Close();
         
         }
 
@@ -395,11 +327,15 @@ namespace Списание_дерева
             FileInfo f = new FileInfo("test.docx");
             string fullname = f.FullName;
 
+            var pi = new ProcessStartInfo(fullname);
+            pi.UseShellExecute = true;
+            pi.Verb = "print";
+            var process = System.Diagnostics.Process.Start(pi);
 
 
 
             f1.PopulateDataGrid();
-            DocumentModel.Load(fullname, LoadOptions.DocxDefault).Print();
+            //DocumentModel.Load(fullname, LoadOptions.DocxDefault).Print();
             this.Close();
         }
 

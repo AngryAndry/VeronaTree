@@ -35,13 +35,15 @@ namespace Списание_дерева
             this.lblTreeSpecies = new System.Windows.Forms.Label();
             this.tbNumberOrder = new System.Windows.Forms.TextBox();
             this.lblNumberOrder = new System.Windows.Forms.Label();
-            this.cbModel = new System.Windows.Forms.ComboBox();
             this.lblModel = new System.Windows.Forms.Label();
             this.dGVSize = new System.Windows.Forms.DataGridView();
             this.Length = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Height = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Width = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btSaveAndPrint = new System.Windows.Forms.Button();
+            this.btDeleteOrder = new System.Windows.Forms.Button();
+            this.cbModel = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dGVSize)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,15 +55,17 @@ namespace Списание_дерева
             this.btCancel.TabIndex = 36;
             this.btCancel.Text = "Отмена";
             this.btCancel.UseVisualStyleBackColor = true;
+            this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
             // 
             // btSave
             // 
-            this.btSave.Location = new System.Drawing.Point(212, 409);
+            this.btSave.Location = new System.Drawing.Point(269, 409);
             this.btSave.Name = "btSave";
             this.btSave.Size = new System.Drawing.Size(94, 29);
             this.btSave.TabIndex = 35;
             this.btSave.Text = "Сохранить";
             this.btSave.UseVisualStyleBackColor = true;
+            this.btSave.Click += new System.EventHandler(this.btSave_Click);
             // 
             // cbTreeSpecies
             // 
@@ -101,18 +105,6 @@ namespace Списание_дерева
             this.lblNumberOrder.Size = new System.Drawing.Size(106, 20);
             this.lblNumberOrder.TabIndex = 22;
             this.lblNumberOrder.Text = "Номер заказа";
-            // 
-            // cbModel
-            // 
-            this.cbModel.FormattingEnabled = true;
-            this.cbModel.Items.AddRange(new object[] {
-            "Unica",
-            "Lady",
-            "Kreola"});
-            this.cbModel.Location = new System.Drawing.Point(474, 48);
-            this.cbModel.Name = "cbModel";
-            this.cbModel.Size = new System.Drawing.Size(151, 28);
-            this.cbModel.TabIndex = 21;
             // 
             // lblModel
             // 
@@ -167,11 +159,60 @@ namespace Списание_дерева
             this.Amount.MinimumWidth = 6;
             this.Amount.Name = "Amount";
             // 
+            // btSaveAndPrint
+            // 
+            this.btSaveAndPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btSaveAndPrint.Location = new System.Drawing.Point(12, 409);
+            this.btSaveAndPrint.Name = "btSaveAndPrint";
+            this.btSaveAndPrint.Size = new System.Drawing.Size(221, 29);
+            this.btSaveAndPrint.TabIndex = 38;
+            this.btSaveAndPrint.Text = "Сохранить и распечатать";
+            this.btSaveAndPrint.UseVisualStyleBackColor = true;
+            this.btSaveAndPrint.Click += new System.EventHandler(this.btSaveAndPrint_Click);
+            // 
+            // btDeleteOrder
+            // 
+            this.btDeleteOrder.BackColor = System.Drawing.Color.Red;
+            this.btDeleteOrder.Location = new System.Drawing.Point(646, 409);
+            this.btDeleteOrder.Name = "btDeleteOrder";
+            this.btDeleteOrder.Size = new System.Drawing.Size(142, 29);
+            this.btDeleteOrder.TabIndex = 39;
+            this.btDeleteOrder.Text = "Удалить заказ";
+            this.btDeleteOrder.UseVisualStyleBackColor = false;
+            this.btDeleteOrder.Click += new System.EventHandler(this.btDeleteOrder_Click);
+            // 
+            // cbModel
+            // 
+            this.cbModel.FormattingEnabled = true;
+            this.cbModel.Items.AddRange(new object[] {
+            "Unica",
+            "Lady",
+            "Kreola",
+            "Victoria",
+            "Cristina",
+            "Naomi",
+            "Vintage",
+            "Grazia",
+            "Karmen",
+            "Valeriana",
+            "Lea",
+            "Asty",
+            "Country",
+            "НСТ",
+            "___"});
+            this.cbModel.Location = new System.Drawing.Point(474, 48);
+            this.cbModel.Name = "cbModel";
+            this.cbModel.Size = new System.Drawing.Size(151, 28);
+            this.cbModel.TabIndex = 40;
+            // 
             // FormOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.cbModel);
+            this.Controls.Add(this.btDeleteOrder);
+            this.Controls.Add(this.btSaveAndPrint);
             this.Controls.Add(this.dGVSize);
             this.Controls.Add(this.btCancel);
             this.Controls.Add(this.btSave);
@@ -179,7 +220,6 @@ namespace Списание_дерева
             this.Controls.Add(this.lblTreeSpecies);
             this.Controls.Add(this.tbNumberOrder);
             this.Controls.Add(this.lblNumberOrder);
-            this.Controls.Add(this.cbModel);
             this.Controls.Add(this.lblModel);
             this.Name = "FormOrder";
             this.Text = "Заказ";
@@ -197,12 +237,14 @@ namespace Списание_дерева
         private System.Windows.Forms.Label lblTreeSpecies;
         private System.Windows.Forms.TextBox tbNumberOrder;
         private System.Windows.Forms.Label lblNumberOrder;
-        private System.Windows.Forms.ComboBox cbModel;
         private System.Windows.Forms.Label lblModel;
         private System.Windows.Forms.DataGridView dGVSize;
         private System.Windows.Forms.DataGridViewTextBoxColumn Length;
         private System.Windows.Forms.DataGridViewTextBoxColumn Height;
         private System.Windows.Forms.DataGridViewTextBoxColumn Width;
         private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
+        private System.Windows.Forms.Button btSaveAndPrint;
+        private System.Windows.Forms.Button btDeleteOrder;
+        private System.Windows.Forms.ComboBox cbModel;
     }
 }
