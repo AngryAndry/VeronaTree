@@ -119,7 +119,7 @@ namespace Списание_дерева
                 db.Orders.AddRange(order);
 
 
-                Semimanufactures semimanufactures = new Semimanufactures { treeSpecies = cbTreeSpecies.SelectedItem.ToString(), order = order };
+                Semimanufactures semimanufactures = new Semimanufactures { treeSpecies = cbTreeSpecies.Text.ToString(), order = order };
                 db.semimanufactures.AddRange(semimanufactures);
                 List<SizeSemimanufactures> sizeSemimanufactures1 = new();
                 for (int i = 0; i < dGVSize.Rows.Count - 1; i++)
@@ -168,7 +168,7 @@ namespace Списание_дерева
                 db.Orders.AddRange(order);
 
 
-                Semimanufactures semimanufactures = new Semimanufactures { treeSpecies = cbTreeSpecies.SelectedItem.ToString(), order = order };
+                Semimanufactures semimanufactures = new Semimanufactures { treeSpecies = cbTreeSpecies.Text.ToString(), order = order };
                 db.semimanufactures.AddRange(semimanufactures);
                 List<SizeSemimanufactures> sizeSemimanufactures1 = new();
                 for (int i = 0; i < dGVSize.Rows.Count - 1; i++)
@@ -211,7 +211,7 @@ namespace Списание_дерева
 
                 paragraph.AppendLine();
                 paragraph.Append("Порода дерева :  ").FontSize(14).Alignment = Alignment.left;
-                paragraph.Append(selectedTreeSpecies).FontSize(14).Bold().Alignment = Alignment.left;
+                paragraph.Append(cbTreeSpecies.Text.ToString()).FontSize(14).Bold().Alignment = Alignment.left;
 
 
 

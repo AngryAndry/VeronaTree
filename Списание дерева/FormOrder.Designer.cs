@@ -49,6 +49,7 @@ namespace Списание_дерева
             // 
             // btCancel
             // 
+            this.btCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btCancel.Location = new System.Drawing.Point(474, 409);
             this.btCancel.Name = "btCancel";
             this.btCancel.Size = new System.Drawing.Size(94, 29);
@@ -59,6 +60,7 @@ namespace Списание_дерева
             // 
             // btSave
             // 
+            this.btSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btSave.Location = new System.Drawing.Point(269, 409);
             this.btSave.Name = "btSave";
             this.btSave.Size = new System.Drawing.Size(94, 29);
@@ -117,6 +119,9 @@ namespace Списание_дерева
             // 
             // dGVSize
             // 
+            this.dGVSize.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dGVSize.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dGVSize.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Length,
@@ -172,6 +177,7 @@ namespace Списание_дерева
             // 
             // btDeleteOrder
             // 
+            this.btDeleteOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btDeleteOrder.BackColor = System.Drawing.Color.Red;
             this.btDeleteOrder.Location = new System.Drawing.Point(646, 409);
             this.btDeleteOrder.Name = "btDeleteOrder";
