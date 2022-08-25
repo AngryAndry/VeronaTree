@@ -37,22 +37,23 @@ namespace Списание_дерева
             this.lblNumberOrder = new System.Windows.Forms.Label();
             this.lblModel = new System.Windows.Forms.Label();
             this.dGVSize = new System.Windows.Forms.DataGridView();
+            this.btSaveAndPrint = new System.Windows.Forms.Button();
+            this.btDeleteOrder = new System.Windows.Forms.Button();
+            this.cbModel = new System.Windows.Forms.ComboBox();
             this.Length = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Height = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Width = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btSaveAndPrint = new System.Windows.Forms.Button();
-            this.btDeleteOrder = new System.Windows.Forms.Button();
-            this.cbModel = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dGVSize)).BeginInit();
             this.SuspendLayout();
             // 
             // btCancel
             // 
             this.btCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btCancel.Location = new System.Drawing.Point(474, 409);
+            this.btCancel.Location = new System.Drawing.Point(415, 307);
+            this.btCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btCancel.Name = "btCancel";
-            this.btCancel.Size = new System.Drawing.Size(94, 29);
+            this.btCancel.Size = new System.Drawing.Size(82, 22);
             this.btCancel.TabIndex = 36;
             this.btCancel.Text = "Отмена";
             this.btCancel.UseVisualStyleBackColor = true;
@@ -61,9 +62,10 @@ namespace Списание_дерева
             // btSave
             // 
             this.btSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btSave.Location = new System.Drawing.Point(269, 409);
+            this.btSave.Location = new System.Drawing.Point(235, 307);
+            this.btSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btSave.Name = "btSave";
-            this.btSave.Size = new System.Drawing.Size(94, 29);
+            this.btSave.Size = new System.Drawing.Size(82, 22);
             this.btSave.TabIndex = 35;
             this.btSave.Text = "Сохранить";
             this.btSave.UseVisualStyleBackColor = true;
@@ -78,42 +80,44 @@ namespace Списание_дерева
             "Липа",
             "Акация ",
             "Дуб"});
-            this.cbTreeSpecies.Location = new System.Drawing.Point(203, 125);
+            this.cbTreeSpecies.Location = new System.Drawing.Point(178, 94);
+            this.cbTreeSpecies.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbTreeSpecies.Name = "cbTreeSpecies";
-            this.cbTreeSpecies.Size = new System.Drawing.Size(151, 28);
+            this.cbTreeSpecies.Size = new System.Drawing.Size(133, 23);
             this.cbTreeSpecies.TabIndex = 25;
             // 
             // lblTreeSpecies
             // 
             this.lblTreeSpecies.AutoSize = true;
-            this.lblTreeSpecies.Location = new System.Drawing.Point(59, 125);
+            this.lblTreeSpecies.Location = new System.Drawing.Point(52, 94);
             this.lblTreeSpecies.Name = "lblTreeSpecies";
-            this.lblTreeSpecies.Size = new System.Drawing.Size(116, 20);
+            this.lblTreeSpecies.Size = new System.Drawing.Size(89, 15);
             this.lblTreeSpecies.TabIndex = 24;
             this.lblTreeSpecies.Text = "Порода дерева";
             // 
             // tbNumberOrder
             // 
-            this.tbNumberOrder.Location = new System.Drawing.Point(212, 48);
+            this.tbNumberOrder.Location = new System.Drawing.Point(186, 36);
+            this.tbNumberOrder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbNumberOrder.Name = "tbNumberOrder";
-            this.tbNumberOrder.Size = new System.Drawing.Size(151, 27);
+            this.tbNumberOrder.Size = new System.Drawing.Size(133, 23);
             this.tbNumberOrder.TabIndex = 23;
             // 
             // lblNumberOrder
             // 
             this.lblNumberOrder.AutoSize = true;
-            this.lblNumberOrder.Location = new System.Drawing.Point(59, 51);
+            this.lblNumberOrder.Location = new System.Drawing.Point(52, 38);
             this.lblNumberOrder.Name = "lblNumberOrder";
-            this.lblNumberOrder.Size = new System.Drawing.Size(106, 20);
+            this.lblNumberOrder.Size = new System.Drawing.Size(82, 15);
             this.lblNumberOrder.TabIndex = 22;
             this.lblNumberOrder.Text = "Номер заказа";
             // 
             // lblModel
             // 
             this.lblModel.AutoSize = true;
-            this.lblModel.Location = new System.Drawing.Point(393, 51);
+            this.lblModel.Location = new System.Drawing.Point(344, 38);
             this.lblModel.Name = "lblModel";
-            this.lblModel.Size = new System.Drawing.Size(63, 20);
+            this.lblModel.Size = new System.Drawing.Size(50, 15);
             this.lblModel.TabIndex = 20;
             this.lblModel.Text = "Модель";
             // 
@@ -128,48 +132,20 @@ namespace Списание_дерева
             this.Height,
             this.Width,
             this.Amount});
-            this.dGVSize.Location = new System.Drawing.Point(12, 160);
-            this.dGVSize.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dGVSize.Location = new System.Drawing.Point(10, 120);
             this.dGVSize.Name = "dGVSize";
             this.dGVSize.RowHeadersWidth = 51;
             this.dGVSize.RowTemplate.Height = 25;
-            this.dGVSize.Size = new System.Drawing.Size(776, 219);
+            this.dGVSize.Size = new System.Drawing.Size(679, 164);
             this.dGVSize.TabIndex = 37;
-            // 
-            // Length
-            // 
-            this.Length.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Length.HeaderText = "Длина";
-            this.Length.MinimumWidth = 6;
-            this.Length.Name = "Length";
-            // 
-            // Height
-            // 
-            this.Height.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Height.HeaderText = "Ширина";
-            this.Height.MinimumWidth = 6;
-            this.Height.Name = "Height";
-            // 
-            // Width
-            // 
-            this.Width.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Width.HeaderText = "Высота";
-            this.Width.MinimumWidth = 6;
-            this.Width.Name = "Width";
-            // 
-            // Amount
-            // 
-            this.Amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Amount.HeaderText = "Количество";
-            this.Amount.MinimumWidth = 6;
-            this.Amount.Name = "Amount";
             // 
             // btSaveAndPrint
             // 
             this.btSaveAndPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btSaveAndPrint.Location = new System.Drawing.Point(12, 409);
+            this.btSaveAndPrint.Location = new System.Drawing.Point(10, 307);
+            this.btSaveAndPrint.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btSaveAndPrint.Name = "btSaveAndPrint";
-            this.btSaveAndPrint.Size = new System.Drawing.Size(221, 29);
+            this.btSaveAndPrint.Size = new System.Drawing.Size(193, 22);
             this.btSaveAndPrint.TabIndex = 38;
             this.btSaveAndPrint.Text = "Сохранить и распечатать";
             this.btSaveAndPrint.UseVisualStyleBackColor = true;
@@ -179,9 +155,10 @@ namespace Списание_дерева
             // 
             this.btDeleteOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btDeleteOrder.BackColor = System.Drawing.Color.Red;
-            this.btDeleteOrder.Location = new System.Drawing.Point(646, 409);
+            this.btDeleteOrder.Location = new System.Drawing.Point(565, 307);
+            this.btDeleteOrder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btDeleteOrder.Name = "btDeleteOrder";
-            this.btDeleteOrder.Size = new System.Drawing.Size(142, 29);
+            this.btDeleteOrder.Size = new System.Drawing.Size(124, 22);
             this.btDeleteOrder.TabIndex = 39;
             this.btDeleteOrder.Text = "Удалить заказ";
             this.btDeleteOrder.UseVisualStyleBackColor = false;
@@ -206,16 +183,45 @@ namespace Списание_дерева
             "Country",
             "НСТ",
             "___"});
-            this.cbModel.Location = new System.Drawing.Point(474, 48);
+            this.cbModel.Location = new System.Drawing.Point(415, 36);
+            this.cbModel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbModel.Name = "cbModel";
-            this.cbModel.Size = new System.Drawing.Size(151, 28);
+            this.cbModel.Size = new System.Drawing.Size(133, 23);
             this.cbModel.TabIndex = 40;
+            // 
+            // Length
+            // 
+            this.Length.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Length.HeaderText = "Длина";
+            this.Length.MinimumWidth = 6;
+            this.Length.Name = "Length";
+            // 
+            // Height
+            // 
+            this.Height.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Height.HeaderText = "Ширина";
+            this.Height.MinimumWidth = 6;
+            this.Height.Name = "Height";
+            // 
+            // Width
+            // 
+            this.Width.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Width.HeaderText = "Толщина";
+            this.Width.MinimumWidth = 6;
+            this.Width.Name = "Width";
+            // 
+            // Amount
+            // 
+            this.Amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Amount.HeaderText = "Количество";
+            this.Amount.MinimumWidth = 6;
+            this.Amount.Name = "Amount";
             // 
             // FormOrder
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(700, 338);
             this.Controls.Add(this.cbModel);
             this.Controls.Add(this.btDeleteOrder);
             this.Controls.Add(this.btSaveAndPrint);
@@ -227,6 +233,7 @@ namespace Списание_дерева
             this.Controls.Add(this.tbNumberOrder);
             this.Controls.Add(this.lblNumberOrder);
             this.Controls.Add(this.lblModel);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormOrder";
             this.Text = "Заказ";
             ((System.ComponentModel.ISupportInitialize)(this.dGVSize)).EndInit();
@@ -245,12 +252,12 @@ namespace Списание_дерева
         private System.Windows.Forms.Label lblNumberOrder;
         private System.Windows.Forms.Label lblModel;
         private System.Windows.Forms.DataGridView dGVSize;
+        private System.Windows.Forms.Button btSaveAndPrint;
+        private System.Windows.Forms.Button btDeleteOrder;
+        private System.Windows.Forms.ComboBox cbModel;
         private System.Windows.Forms.DataGridViewTextBoxColumn Length;
         private System.Windows.Forms.DataGridViewTextBoxColumn Height;
         private System.Windows.Forms.DataGridViewTextBoxColumn Width;
         private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
-        private System.Windows.Forms.Button btSaveAndPrint;
-        private System.Windows.Forms.Button btDeleteOrder;
-        private System.Windows.Forms.ComboBox cbModel;
     }
 }

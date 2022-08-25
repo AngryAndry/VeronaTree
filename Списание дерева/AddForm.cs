@@ -158,13 +158,15 @@ namespace Списание_дерева
                     SizeSemimanufactures sizeSemimanufactures = new SizeSemimanufactures
                     {
                         semimanufactures = semimanufactures,
-                        amount = Int32.Parse(dGVSize.Rows[i].Cells[0].Value.ToString())
+
+                        
+                        length = Int32.Parse(dGVSize.Rows[i].Cells[0].Value.ToString())
                     ,
-                        length = Int32.Parse(dGVSize.Rows[i].Cells[1].Value.ToString())
+                        height = Int32.Parse(dGVSize.Rows[i].Cells[1].Value.ToString())
                     ,
                         width = Int32.Parse(dGVSize.Rows[i].Cells[2].Value.ToString())
                     ,
-                        height = Int32.Parse(dGVSize.Rows[i].Cells[3].Value.ToString())
+                        amount = Int32.Parse(dGVSize.Rows[i].Cells[3].Value.ToString())
                     };
                     sizeSemimanufactures1.Add(sizeSemimanufactures);
                 }
@@ -239,13 +241,15 @@ namespace Списание_дерева
                 {
                 
                 SizeSemimanufactures sizeSemimanufactures = new SizeSemimanufactures { semimanufactures =semimanufactures,
-                    amount = Int32.Parse(dGVSize.Rows[i].Cells[0].Value.ToString())
-                ,
-                    length = Int32.Parse(dGVSize.Rows[i].Cells[1].Value.ToString())
-                ,
+
+                   
+                    length = Int32.Parse(dGVSize.Rows[i].Cells[0].Value.ToString())
+                    ,
+                    height = Int32.Parse(dGVSize.Rows[i].Cells[1].Value.ToString())
+                    ,
                     width = Int32.Parse(dGVSize.Rows[i].Cells[2].Value.ToString())
-                ,
-                    height = Int32.Parse(dGVSize.Rows[i].Cells[3].Value.ToString())
+                    ,
+                    amount = Int32.Parse(dGVSize.Rows[i].Cells[3].Value.ToString())
                 };
                     sizeSemimanufactures1.Add(sizeSemimanufactures);
                 }
@@ -284,7 +288,7 @@ namespace Списание_дерева
 
                 t.Rows[0].Cells[0].Paragraphs[0].Append("Длина  ММ");
                 t.Rows[0].Cells[1].Paragraphs[0].Append("Ширина  ММ");
-                t.Rows[0].Cells[2].Paragraphs[0].Append("Высота  ММ");
+                t.Rows[0].Cells[2].Paragraphs[0].Append("Толщина  ММ");
                 t.Rows[0].Cells[3].Paragraphs[0].Append("Количество ШТ");
                 t.Rows[0].Cells[4].Paragraphs[0].Append("Объём  М3");
                 List<Decimal> v = new List<decimal>();

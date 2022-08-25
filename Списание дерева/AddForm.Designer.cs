@@ -37,14 +37,14 @@ namespace Списание_дерева
             this.btSave = new System.Windows.Forms.Button();
             this.btCancel = new System.Windows.Forms.Button();
             this.dGVSize = new System.Windows.Forms.DataGridView();
-            this.Length = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Height = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Width = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.btSaveAndPrint = new System.Windows.Forms.Button();
             this.cbTreeSpecies = new System.Windows.Forms.ComboBox();
             this.lblTreeSpecies = new System.Windows.Forms.Label();
+            this.Length = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Height = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Width = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dGVSize)).BeginInit();
             this.SuspendLayout();
             // 
@@ -145,34 +145,6 @@ namespace Списание_дерева
             this.dGVSize.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dGVSize_CellValidating);
             this.dGVSize.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbWidth_KeyPress);
             // 
-            // Length
-            // 
-            this.Length.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Length.HeaderText = "Длина";
-            this.Length.MinimumWidth = 6;
-            this.Length.Name = "Length";
-            // 
-            // Height
-            // 
-            this.Height.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Height.HeaderText = "Ширина";
-            this.Height.MinimumWidth = 6;
-            this.Height.Name = "Height";
-            // 
-            // Width
-            // 
-            this.Width.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Width.HeaderText = "Высота";
-            this.Width.MinimumWidth = 6;
-            this.Width.Name = "Width";
-            // 
-            // Amount
-            // 
-            this.Amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Amount.HeaderText = "Количество";
-            this.Amount.MinimumWidth = 6;
-            this.Amount.Name = "Amount";
-            // 
             // btSaveAndPrint
             // 
             this.btSaveAndPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -210,6 +182,34 @@ namespace Списание_дерева
             this.lblTreeSpecies.TabIndex = 26;
             this.lblTreeSpecies.Text = "Порода дерева";
             // 
+            // Length
+            // 
+            this.Length.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Length.HeaderText = "Длина";
+            this.Length.MinimumWidth = 6;
+            this.Length.Name = "Length";
+            // 
+            // Height
+            // 
+            this.Height.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Height.HeaderText = "Ширина";
+            this.Height.MinimumWidth = 6;
+            this.Height.Name = "Height";
+            // 
+            // Width
+            // 
+            this.Width.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Width.HeaderText = "Толщина";
+            this.Width.MinimumWidth = 6;
+            this.Width.Name = "Width";
+            // 
+            // Amount
+            // 
+            this.Amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Amount.HeaderText = "Количество";
+            this.Amount.MinimumWidth = 6;
+            this.Amount.Name = "Amount";
+            // 
             // AddForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -245,13 +245,13 @@ namespace Списание_дерева
         private System.Windows.Forms.Button btSave;
         private System.Windows.Forms.Button btCancel;
         private System.Windows.Forms.DataGridView dGVSize;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Length;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Height;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Width;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.Button btSaveAndPrint;
         private System.Windows.Forms.ComboBox cbTreeSpecies;
         private System.Windows.Forms.Label lblTreeSpecies;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Length;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Height;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Width;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
     }
 }
