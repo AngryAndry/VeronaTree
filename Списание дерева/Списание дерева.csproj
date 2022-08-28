@@ -5,6 +5,10 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <RootNamespace>Списание_дерева</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageIcon>Verona_photo-resizer.ru.png</PackageIcon>
+    <PackageId>VeronaTree</PackageId>
+    <ApplicationIcon>Verona_photo-resizer.ru.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,6 +21,17 @@
       <Isolated>false</Isolated>
       <EmbedInteropTypes>true</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Verona_photo-resizer.ru.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\..\Desktop\Verona_photo-resizer.ru.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
