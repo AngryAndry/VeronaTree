@@ -25,14 +25,11 @@ namespace Списание_дерева
 {
     public partial class AddForm : Form
     {
-        private int i;
+      
         private Form1 f1;
         public string selectedModel { get; set; }
         public string selectedTreeSpecies { get; set; }
-        Order order;
-        Semimanufactures semimanufactures;
-        SizeSemimanufactures sizeSemimanufactures;
-        List<AddBlank> addBlanks = new List<AddBlank>();
+      
 
        
         public AddForm()
@@ -45,9 +42,7 @@ namespace Списание_дерева
         public AddForm(Form1 form1)
         {
             InitializeComponent();
-            ComponentInfo.SetLicense("FREE-LIMITED-KEY");
-
-            i = 0;
+           
             f1 = form1;
            
         }
@@ -143,18 +138,44 @@ namespace Списание_дерева
             using (ApplicationContext db = new ApplicationContext())
             {
 
-
+         
                 // создание и добавление моделей
                 Order order = new Order { numberOrder = tbNumberOrder.Text.ToString(), model = selectedModel, date = DateTime.Now.ToString() };
-
-                db.Orders.AddRange(order);
-
+                if (order.model == null)
+                {
+                    order.model = "-----";
+                }
+                if(order.numberOrder== "")
+                {
+                    MessageBox.Show("Не добавлен номер заказа!!!");
+                    return;
+                }
                 Semimanufactures semimanufactures = new Semimanufactures { treeSpecies = selectedTreeSpecies, order = order };
-                db.semimanufactures.AddRange(semimanufactures);
                 List<SizeSemimanufactures> sizeSemimanufactures1 = new();
                 for (int i = 0; i < dGVSize.Rows.Count - 1; i++)
                 {
 
+              
+                        if (dGVSize.Rows[i].Cells[0].Value == null)
+               {
+                   MessageBox.Show("Не добавлена длина!!!");
+                   return;
+               }        
+                    if (dGVSize.Rows[i].Cells[1].Value == null)
+               {
+                   MessageBox.Show("Не добавлена ширина!!!");
+                   return;
+               }    
+                    if (dGVSize.Rows[i].Cells[2].Value == null)
+               {
+                   MessageBox.Show("Не добавлена толщина!!!");
+                   return;
+               }      
+                    if (dGVSize.Rows[i].Cells[3].Value == null)
+               {
+                   MessageBox.Show("Укажите количество!!!");
+                   return;
+               }
                     SizeSemimanufactures sizeSemimanufactures = new SizeSemimanufactures
                     {
                         semimanufactures = semimanufactures,
@@ -171,6 +192,8 @@ namespace Списание_дерева
                     sizeSemimanufactures1.Add(sizeSemimanufactures);
                 }
 
+                db.semimanufactures.AddRange(semimanufactures);
+                db.Orders.AddRange(order);
                 db.sizeSemimanufactures.AddRange(sizeSemimanufactures1);
                 db.SaveChanges();
             }
@@ -195,19 +218,6 @@ namespace Списание_дерева
 
         private void button1_Click(object sender, EventArgs e)
         {
-        AddBlank addBlank = new AddBlank();
-
-            i = i + 155;
-            addBlank.lblTreeSpecies.Location = new System.Drawing.Point(73, 104 + i);
-            addBlank.cbTreeSpecies.Location = new System.Drawing.Point(226, 104+ i);
-
-            this.Controls.Add(addBlank.lblTreeSpecies);
-            this.Controls.Add(addBlank.cbTreeSpecies);
-            //addBlank.btDelete+= btDelete_Click
-            addBlank.btAdd.Click += new EventHandler(tbAddSize_Click);
-
-            btSave.Location = new System.Drawing.Point(226, 372 + i);
-            btCancel.Location = new System.Drawing.Point (455, 372+i);
         }
      
 
@@ -217,30 +227,52 @@ namespace Списание_дерева
             
 
         }
-        private void addNewBlank() {
-            AddBlank addBlank = new();
-            addBlanks.Add(addBlank);
-                }
-
+       
         private void btSaveAndPrint_Click(object sender, EventArgs e)
         {
           
             using (ApplicationContext db = new ApplicationContext())
-            {
-                
+            {   
+
 
                 // создание и добавление моделей
+
                 Order order = new Order { numberOrder = tbNumberOrder.Text.ToString(), model =selectedModel, date =DateTime.Now.ToString() };
-                
-                db.Orders.AddRange(order);
-               
+                if (order.model == null)
+                {
+                    order.model = "-----";
+                }
+                if (order.numberOrder == "")
+                {
+                    MessageBox.Show("Не добавлен номер заказа!!!");
+                    return;
+                }
+
                 Semimanufactures semimanufactures = new Semimanufactures { treeSpecies = selectedTreeSpecies , order = order };
-                db.semimanufactures.AddRange(semimanufactures);
                 List<SizeSemimanufactures> sizeSemimanufactures1 = new ();
                 for (int i = 0; i < dGVSize.Rows.Count-1; i++)
                 {
-                
-                SizeSemimanufactures sizeSemimanufactures = new SizeSemimanufactures { semimanufactures =semimanufactures,
+                    if (dGVSize.Rows[i].Cells[0].Value == null)
+                    {
+                        MessageBox.Show("Не добавлена длина!!!");
+                        return;
+                    }
+                    if (dGVSize.Rows[i].Cells[1].Value == null)
+                    {
+                        MessageBox.Show("Не добавлена ширина!!!");
+                        return;
+                    }
+                    if (dGVSize.Rows[i].Cells[2].Value == null)
+                    {
+                        MessageBox.Show("Не добавлена толщина!!!");
+                        return;
+                    }
+                    if (dGVSize.Rows[i].Cells[3].Value == null)
+                    {
+                        MessageBox.Show("Укажите количество!!!");
+                        return;
+                    }
+                    SizeSemimanufactures sizeSemimanufactures = new SizeSemimanufactures { semimanufactures =semimanufactures,
 
                    
                     length = Int32.Parse(dGVSize.Rows[i].Cells[0].Value.ToString())
@@ -254,6 +286,8 @@ namespace Списание_дерева
                     sizeSemimanufactures1.Add(sizeSemimanufactures);
                 }
                 
+                db.Orders.AddRange(order);
+                db.semimanufactures.AddRange(semimanufactures);
                 db.sizeSemimanufactures.AddRange(sizeSemimanufactures1);
                 db.SaveChanges();
             }
@@ -307,7 +341,7 @@ namespace Списание_дерева
                         }
                         else
                             t.Rows[j + 1].Cells[k].Paragraphs[0].Append(dGVSize.Rows[j].Cells[k].Value.ToString());
-                        // t.Rows[j + 1].Cells[k + 1].Range.Text = dGVSize.Rows[j].Cells[k].Value.ToString();
+                        
 
                     }
 
@@ -339,13 +373,23 @@ namespace Списание_дерева
 
 
             f1.PopulateDataGrid();
-            //DocumentModel.Load(fullname, LoadOptions.DocxDefault).Print();
+
             this.Close();
         }
 
         private void dGVSize_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-           
+            string cellValue = e.FormattedValue.ToString();
+          
+            int numericValue;
+            bool isNumber = int.TryParse(cellValue, out numericValue);
+
+          
+           if (!isNumber&& (cellValue !=""))
+            {
+                MessageBox.Show("Может быть установленно только целочисленное значение!");
+                e.Cancel = true;
+            }
         }
     }
 }

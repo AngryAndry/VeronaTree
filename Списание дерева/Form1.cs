@@ -14,7 +14,7 @@ namespace Списание_дерева
 {
     public partial class Form1 : Form
     {
-       public List<Order> orders = new List<Order>();
+       
         public Form1()
         {
 
@@ -42,7 +42,7 @@ namespace Списание_дерева
                 foreach (var item in order)
                 {
 
-                    dataGridView1.Rows.Add(item.numberOrder, item.model);
+                    dataGridView1.Rows.Add(item.numberOrder, item.model, item.date);
 
                 }
             }

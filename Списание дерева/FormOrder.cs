@@ -32,13 +32,13 @@ namespace Списание_дерева
         {
             f1 = form;
             InitializeComponent();
-            ComponentInfo.SetLicense("PDH37-2BD7F-BWOQG-E7EJV-RIDHSY");
+            
 
             tbNumberOrder.Text = f1.dataGridView1[0, f1.dataGridView1.CurrentRow.Index].Value.ToString();
             cbModel.Text = f1.dataGridView1[1, f1.dataGridView1.CurrentRow.Index].Value.ToString();
             using (ApplicationContext db = new ApplicationContext())
             {
-                //var order = db.Orders.ToList();
+                
                 var index = db.Orders.FirstOrDefault(p => p.numberOrder == tbNumberOrder.Text);
                 var g = from order in db.Orders
                         join semimanufactures in db.semimanufactures on order.Id equals semimanufactures.OrderId
@@ -97,10 +97,7 @@ namespace Списание_дерева
             f1.PopulateDataGrid();
             MessageBox.Show("Заказ удален");
             this.Close();
-
-            /*      (from user in db.Users.Include(p => p.Company)
-                   where user.CompanyId == 1
-                   select user).ToList();*/
+            
         }
 
         private void btSave_Click(object sender, EventArgs e)
@@ -110,21 +107,46 @@ namespace Списание_дерева
 
 
                 // создание и добавление моделей
-                Order order = new Order { numberOrder = tbNumberOrder.Text.ToString(), model = cbModel.Text, date = DateTime.Now.ToString() };
+                Order order = new Order { numberOrder = tbNumberOrder.Text.ToString(), model = cbModel.Text ,date = f1.dataGridView1.CurrentRow.Cells[2].Value.ToString() };
+                if (order.model == null)
+                {
+                    order.model = "-----";
+                }
+                if (order.numberOrder == "")
+                {
+                    MessageBox.Show("Не добавлен номер заказа!!!");
+                    return;
+                }
                 var variable = db.Orders
 .Where(c => c.numberOrder == f1.dataGridView1[0, f1.dataGridView1.CurrentRow.Index].Value.ToString())
 .FirstOrDefault();
 
-                db.Orders.Remove(variable);
-                db.Orders.AddRange(order);
 
 
                 Semimanufactures semimanufactures = new Semimanufactures { treeSpecies = cbTreeSpecies.Text.ToString(), order = order };
-                db.semimanufactures.AddRange(semimanufactures);
                 List<SizeSemimanufactures> sizeSemimanufactures1 = new();
                 for (int i = 0; i < dGVSize.Rows.Count - 1; i++)
                 {
-
+                    if (dGVSize.Rows[i].Cells[0].Value == null)
+                    {
+                        MessageBox.Show("Не добавлена длина!!!");
+                        return;
+                    }
+                    if (dGVSize.Rows[i].Cells[1].Value == null)
+                    {
+                        MessageBox.Show("Не добавлена ширина!!!");
+                        return;
+                    }
+                    if (dGVSize.Rows[i].Cells[2].Value == null)
+                    {
+                        MessageBox.Show("Не добавлена толщина!!!");
+                        return;
+                    }
+                    if (dGVSize.Rows[i].Cells[3].Value == null)
+                    {
+                        MessageBox.Show("Укажите количество!!!");
+                        return;
+                    }
                     SizeSemimanufactures sizeSemimanufactures = new SizeSemimanufactures
                     {
                         semimanufactures = semimanufactures,
@@ -138,7 +160,10 @@ namespace Списание_дерева
                     };
                     sizeSemimanufactures1.Add(sizeSemimanufactures);
                 }
+                db.Orders.Remove(variable);
+                db.Orders.AddRange(order);
               
+                db.semimanufactures.AddRange(semimanufactures);
                 db.sizeSemimanufactures.AddRange(sizeSemimanufactures1);
              
             
@@ -159,21 +184,45 @@ namespace Списание_дерева
 
 
                 // создание и добавление моделей
-                Order order = new Order { numberOrder = tbNumberOrder.Text.ToString(), model = cbModel.Text, date = DateTime.Now.ToString() };
+                Order order = new Order { numberOrder = tbNumberOrder.Text.ToString(), model = cbModel.Text, date= f1.dataGridView1.CurrentRow.Cells[2].Value.ToString() };
+                if (order.model == null)
+                {
+                    order.model = "-----";
+                }
+                if (order.numberOrder == "")
+                {
+                    MessageBox.Show("Не добавлен номер заказа!!!");
+                    return;
+                }
                 var variable = db.Orders
 .Where(c => c.numberOrder == f1.dataGridView1[0, f1.dataGridView1.CurrentRow.Index].Value.ToString())
 .FirstOrDefault();
 
-                db.Orders.Remove(variable);
-                db.Orders.AddRange(order);
-
 
                 Semimanufactures semimanufactures = new Semimanufactures { treeSpecies = cbTreeSpecies.Text.ToString(), order = order };
-                db.semimanufactures.AddRange(semimanufactures);
                 List<SizeSemimanufactures> sizeSemimanufactures1 = new();
                 for (int i = 0; i < dGVSize.Rows.Count - 1; i++)
                 {
-
+                    if (dGVSize.Rows[i].Cells[0].Value == null)
+                    {
+                        MessageBox.Show("Не добавлена длина!!!");
+                        return;
+                    }
+                    if (dGVSize.Rows[i].Cells[1].Value == null)
+                    {
+                        MessageBox.Show("Не добавлена ширина!!!");
+                        return;
+                    }
+                    if (dGVSize.Rows[i].Cells[2].Value == null)
+                    {
+                        MessageBox.Show("Не добавлена толщина!!!");
+                        return;
+                    }
+                    if (dGVSize.Rows[i].Cells[3].Value == null)
+                    {
+                        MessageBox.Show("Укажите количество!!!");
+                        return;
+                    }
                     SizeSemimanufactures sizeSemimanufactures = new SizeSemimanufactures
                     {
                         semimanufactures = semimanufactures,
@@ -189,6 +238,10 @@ namespace Списание_дерева
                     sizeSemimanufactures1.Add(sizeSemimanufactures);
                 }
 
+                db.Orders.Remove(variable);
+                db.Orders.AddRange(order);
+
+                db.semimanufactures.AddRange(semimanufactures);
                 db.sizeSemimanufactures.AddRange(sizeSemimanufactures1);
 
 
@@ -274,7 +327,7 @@ namespace Списание_дерева
                 var process = System.Diagnostics.Process.Start(pi);
             }
             f1.PopulateDataGrid();
-           // DocumentModel.Load(fullname, LoadOptions.DocxDefault).Print();
+          
             this.Close();
 
         }
@@ -282,6 +335,21 @@ namespace Списание_дерева
         private void btCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void dGVSize_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            string cellValue = e.FormattedValue.ToString();
+
+            int numericValue;
+            bool isNumber = int.TryParse(cellValue, out numericValue);
+
+
+            if (!isNumber && (cellValue != ""))
+            {
+                MessageBox.Show("Может быть установленно только целочисленное значение!");
+                e.Cancel = true;
+            }
         }
     }
 }

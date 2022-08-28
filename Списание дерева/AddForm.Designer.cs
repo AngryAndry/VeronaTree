@@ -30,6 +30,7 @@ namespace Списание_дерева
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblModel = new System.Windows.Forms.Label();
             this.cbModel = new System.Windows.Forms.ComboBox();
             this.lblNumberOrder = new System.Windows.Forms.Label();
@@ -51,9 +52,9 @@ namespace Списание_дерева
             // lblModel
             // 
             this.lblModel.AutoSize = true;
-            this.lblModel.Location = new System.Drawing.Point(425, 37);
+            this.lblModel.Location = new System.Drawing.Point(486, 49);
             this.lblModel.Name = "lblModel";
-            this.lblModel.Size = new System.Drawing.Size(50, 15);
+            this.lblModel.Size = new System.Drawing.Size(63, 20);
             this.lblModel.TabIndex = 0;
             this.lblModel.Text = "Модель";
             this.lblModel.Click += new System.EventHandler(this.label1_Click);
@@ -77,37 +78,34 @@ namespace Списание_дерева
             "Country",
             "НСТ",
             "___"});
-            this.cbModel.Location = new System.Drawing.Point(494, 34);
-            this.cbModel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbModel.Location = new System.Drawing.Point(565, 45);
             this.cbModel.Name = "cbModel";
-            this.cbModel.Size = new System.Drawing.Size(133, 23);
+            this.cbModel.Size = new System.Drawing.Size(151, 28);
             this.cbModel.TabIndex = 4;
             this.cbModel.SelectedIndexChanged += new System.EventHandler(this.cbModel_SelectedIndexChanged);
             // 
             // lblNumberOrder
             // 
             this.lblNumberOrder.AutoSize = true;
-            this.lblNumberOrder.Location = new System.Drawing.Point(64, 37);
+            this.lblNumberOrder.Location = new System.Drawing.Point(73, 49);
             this.lblNumberOrder.Name = "lblNumberOrder";
-            this.lblNumberOrder.Size = new System.Drawing.Size(82, 15);
+            this.lblNumberOrder.Size = new System.Drawing.Size(106, 20);
             this.lblNumberOrder.TabIndex = 5;
             this.lblNumberOrder.Text = "Номер заказа";
             // 
             // tbNumberOrder
             // 
-            this.tbNumberOrder.Location = new System.Drawing.Point(198, 34);
-            this.tbNumberOrder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbNumberOrder.Location = new System.Drawing.Point(226, 45);
             this.tbNumberOrder.Name = "tbNumberOrder";
-            this.tbNumberOrder.Size = new System.Drawing.Size(133, 23);
+            this.tbNumberOrder.Size = new System.Drawing.Size(151, 27);
             this.tbNumberOrder.TabIndex = 6;
             // 
             // btSave
             // 
             this.btSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btSave.Location = new System.Drawing.Point(248, 305);
-            this.btSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btSave.Location = new System.Drawing.Point(283, 407);
             this.btSave.Name = "btSave";
-            this.btSave.Size = new System.Drawing.Size(82, 22);
+            this.btSave.Size = new System.Drawing.Size(94, 29);
             this.btSave.TabIndex = 18;
             this.btSave.Text = "Сохранить";
             this.btSave.UseVisualStyleBackColor = true;
@@ -116,10 +114,9 @@ namespace Списание_дерева
             // btCancel
             // 
             this.btCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btCancel.Location = new System.Drawing.Point(402, 305);
-            this.btCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btCancel.Location = new System.Drawing.Point(459, 407);
             this.btCancel.Name = "btCancel";
-            this.btCancel.Size = new System.Drawing.Size(82, 22);
+            this.btCancel.Size = new System.Drawing.Size(94, 29);
             this.btCancel.TabIndex = 19;
             this.btCancel.Text = "Отмена";
             this.btCancel.UseVisualStyleBackColor = true;
@@ -130,17 +127,26 @@ namespace Списание_дерева
             this.dGVSize.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dGVSize.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dGVSize.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dGVSize.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Length,
             this.Height,
             this.Width,
             this.Amount});
-            this.dGVSize.Location = new System.Drawing.Point(10, 124);
+            this.dGVSize.Location = new System.Drawing.Point(11, 165);
+            this.dGVSize.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dGVSize.Name = "dGVSize";
             this.dGVSize.RowHeadersWidth = 51;
             this.dGVSize.RowTemplate.Height = 25;
-            this.dGVSize.Size = new System.Drawing.Size(679, 164);
+            this.dGVSize.Size = new System.Drawing.Size(776, 219);
             this.dGVSize.TabIndex = 21;
             this.dGVSize.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dGVSize_CellValidating);
             this.dGVSize.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbWidth_KeyPress);
@@ -148,10 +154,9 @@ namespace Списание_дерева
             // btSaveAndPrint
             // 
             this.btSaveAndPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btSaveAndPrint.Location = new System.Drawing.Point(26, 305);
-            this.btSaveAndPrint.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btSaveAndPrint.Location = new System.Drawing.Point(30, 407);
             this.btSaveAndPrint.Name = "btSaveAndPrint";
-            this.btSaveAndPrint.Size = new System.Drawing.Size(193, 22);
+            this.btSaveAndPrint.Size = new System.Drawing.Size(221, 29);
             this.btSaveAndPrint.TabIndex = 22;
             this.btSaveAndPrint.Text = "Сохранить и распечатать";
             this.btSaveAndPrint.UseVisualStyleBackColor = true;
@@ -166,56 +171,55 @@ namespace Списание_дерева
             "Липа",
             "Акация ",
             "Дуб"});
-            this.cbTreeSpecies.Location = new System.Drawing.Point(198, 82);
-            this.cbTreeSpecies.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbTreeSpecies.Location = new System.Drawing.Point(226, 109);
             this.cbTreeSpecies.Name = "cbTreeSpecies";
-            this.cbTreeSpecies.Size = new System.Drawing.Size(133, 23);
+            this.cbTreeSpecies.Size = new System.Drawing.Size(151, 28);
             this.cbTreeSpecies.TabIndex = 27;
             this.cbTreeSpecies.SelectedIndexChanged += new System.EventHandler(this.cbTreeSpecies_SelectedIndexChanged);
             // 
             // lblTreeSpecies
             // 
             this.lblTreeSpecies.AutoSize = true;
-            this.lblTreeSpecies.Location = new System.Drawing.Point(64, 82);
+            this.lblTreeSpecies.Location = new System.Drawing.Point(73, 109);
             this.lblTreeSpecies.Name = "lblTreeSpecies";
-            this.lblTreeSpecies.Size = new System.Drawing.Size(89, 15);
+            this.lblTreeSpecies.Size = new System.Drawing.Size(116, 20);
             this.lblTreeSpecies.TabIndex = 26;
             this.lblTreeSpecies.Text = "Порода дерева";
             // 
             // Length
             // 
             this.Length.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Length.HeaderText = "Длина";
+            this.Length.HeaderText = "Длина   ММ";
             this.Length.MinimumWidth = 6;
             this.Length.Name = "Length";
             // 
             // Height
             // 
             this.Height.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Height.HeaderText = "Ширина";
+            this.Height.HeaderText = "Ширина   ММ";
             this.Height.MinimumWidth = 6;
             this.Height.Name = "Height";
             // 
             // Width
             // 
             this.Width.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Width.HeaderText = "Толщина";
+            this.Width.HeaderText = "Толщина   ММ";
             this.Width.MinimumWidth = 6;
             this.Width.Name = "Width";
             // 
             // Amount
             // 
             this.Amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Amount.HeaderText = "Количество";
+            this.Amount.HeaderText = "Количество   ШТ";
             this.Amount.MinimumWidth = 6;
             this.Amount.Name = "Amount";
             // 
             // AddForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(700, 338);
+            this.ClientSize = new System.Drawing.Size(800, 451);
             this.Controls.Add(this.cbTreeSpecies);
             this.Controls.Add(this.lblTreeSpecies);
             this.Controls.Add(this.btSaveAndPrint);
@@ -226,10 +230,8 @@ namespace Списание_дерева
             this.Controls.Add(this.lblNumberOrder);
             this.Controls.Add(this.cbModel);
             this.Controls.Add(this.lblModel);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "AddForm";
             this.Text = "Добавление заказа";
-            this.Load += new System.EventHandler(this.AddForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dGVSize)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
