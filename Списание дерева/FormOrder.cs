@@ -32,7 +32,8 @@ namespace Списание_дерева
         {
             f1 = form;
             InitializeComponent();
-            
+            cbTreeSpecies.SelectedIndexChanged += cbTreeSpecies_SelectedIndexChanged;
+
 
             tbNumberOrder.Text = f1.dataGridView1[0, f1.dataGridView1.CurrentRow.Index].Value.ToString();
             cbModel.Text = f1.dataGridView1[1, f1.dataGridView1.CurrentRow.Index].Value.ToString();

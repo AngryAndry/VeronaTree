@@ -37,13 +37,13 @@ namespace Списание_дерева
             this.lblNumberOrder = new System.Windows.Forms.Label();
             this.lblModel = new System.Windows.Forms.Label();
             this.dGVSize = new System.Windows.Forms.DataGridView();
-            this.btSaveAndPrint = new System.Windows.Forms.Button();
-            this.btDeleteOrder = new System.Windows.Forms.Button();
-            this.cbModel = new System.Windows.Forms.ComboBox();
             this.Length = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Height = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Width = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btSaveAndPrint = new System.Windows.Forms.Button();
+            this.btDeleteOrder = new System.Windows.Forms.Button();
+            this.cbModel = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dGVSize)).BeginInit();
             this.SuspendLayout();
             // 
@@ -82,6 +82,7 @@ namespace Списание_дерева
             this.cbTreeSpecies.Name = "cbTreeSpecies";
             this.cbTreeSpecies.Size = new System.Drawing.Size(151, 28);
             this.cbTreeSpecies.TabIndex = 25;
+            this.cbTreeSpecies.SelectedIndexChanged += new System.EventHandler(this.cbTreeSpecies_SelectedIndexChanged);
             // 
             // lblTreeSpecies
             // 
@@ -137,6 +138,34 @@ namespace Списание_дерева
             this.dGVSize.TabIndex = 37;
             this.dGVSize.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dGVSize_CellValidating);
             // 
+            // Length
+            // 
+            this.Length.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Length.HeaderText = "Длина    ММ";
+            this.Length.MinimumWidth = 6;
+            this.Length.Name = "Length";
+            // 
+            // Height
+            // 
+            this.Height.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Height.HeaderText = "Ширина   ММ";
+            this.Height.MinimumWidth = 6;
+            this.Height.Name = "Height";
+            // 
+            // Width
+            // 
+            this.Width.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Width.HeaderText = "Толщина   ММ";
+            this.Width.MinimumWidth = 6;
+            this.Width.Name = "Width";
+            // 
+            // Amount
+            // 
+            this.Amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Amount.HeaderText = "Количество   ШТ";
+            this.Amount.MinimumWidth = 6;
+            this.Amount.Name = "Amount";
+            // 
             // btSaveAndPrint
             // 
             this.btSaveAndPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -183,34 +212,6 @@ namespace Списание_дерева
             this.cbModel.Name = "cbModel";
             this.cbModel.Size = new System.Drawing.Size(151, 28);
             this.cbModel.TabIndex = 40;
-            // 
-            // Length
-            // 
-            this.Length.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Length.HeaderText = "Длина    ММ";
-            this.Length.MinimumWidth = 6;
-            this.Length.Name = "Length";
-            // 
-            // Height
-            // 
-            this.Height.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Height.HeaderText = "Ширина   ММ";
-            this.Height.MinimumWidth = 6;
-            this.Height.Name = "Height";
-            // 
-            // Width
-            // 
-            this.Width.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Width.HeaderText = "Толщина   ММ";
-            this.Width.MinimumWidth = 6;
-            this.Width.Name = "Width";
-            // 
-            // Amount
-            // 
-            this.Amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Amount.HeaderText = "Количество   ШТ";
-            this.Amount.MinimumWidth = 6;
-            this.Amount.Name = "Amount";
             // 
             // FormOrder
             // 

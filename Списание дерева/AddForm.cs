@@ -42,7 +42,8 @@ namespace Списание_дерева
         public AddForm(Form1 form1)
         {
             InitializeComponent();
-           
+            cbTreeSpecies.SelectedIndexChanged += cbTreeSpecies_SelectedIndexChanged;
+
             f1 = form1;
            
         }
@@ -151,6 +152,10 @@ namespace Списание_дерева
                     return;
                 }
                 Semimanufactures semimanufactures = new Semimanufactures { treeSpecies = selectedTreeSpecies, order = order };
+                if (semimanufactures.treeSpecies == null)
+                {
+                    semimanufactures.treeSpecies = "-----";
+                }
                 List<SizeSemimanufactures> sizeSemimanufactures1 = new();
                 for (int i = 0; i < dGVSize.Rows.Count - 1; i++)
                 {
@@ -192,8 +197,8 @@ namespace Списание_дерева
                     sizeSemimanufactures1.Add(sizeSemimanufactures);
                 }
 
-                db.semimanufactures.AddRange(semimanufactures);
                 db.Orders.AddRange(order);
+                db.semimanufactures.AddRange(semimanufactures);
                 db.sizeSemimanufactures.AddRange(sizeSemimanufactures1);
                 db.SaveChanges();
             }
@@ -249,6 +254,10 @@ namespace Списание_дерева
                 }
 
                 Semimanufactures semimanufactures = new Semimanufactures { treeSpecies = selectedTreeSpecies , order = order };
+                if (semimanufactures.treeSpecies == null)
+                {
+                    semimanufactures.treeSpecies = "-----";
+                }
                 List<SizeSemimanufactures> sizeSemimanufactures1 = new ();
                 for (int i = 0; i < dGVSize.Rows.Count-1; i++)
                 {
